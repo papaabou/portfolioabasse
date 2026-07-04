@@ -1,0 +1,26 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% block title %}Services | Tableau de bord{% endblock %}
+{% block meta_robots %}noindex, nofollow{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <h1 class="h3 mb-0">Gestion des services</h1>
+    <a href="{% url 'dashboard:dashboard_index' %}" class="btn btn-light btn-sm">&larr; Tableau de bord</a>
+  </div>
+
+  <div class="row g-3">
+    {% for s in services %}
+    <div class="col-md-6">
+      <div class="card-flat h-100">
+        <div class="text-body-secondary small">{% if s.published %}publié{% else %}masqué{% endif %}</div>
+        <h2 class="h5 mt-2">{{ s.title }}</h2>
+        <p class="text-body-secondary">{{ s.description|truncatechars:120 }}</p>
+        <a href="{% url 'dashboard:dashboard_service_edit' s.pk %}" class="btn btn-light btn-sm">Modifier</a>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-body-secondary">Aucun service pour le moment.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

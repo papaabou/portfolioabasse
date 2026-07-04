@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Politique de confidentialité | Abasse NIANG{% endblock %}
+{% block meta_robots %}noindex, follow{% endblock %}
+{% block meta_description %}Politique de confidentialité du site abasseniang.fr : données collectées, finalités, durée de conservation et vos droits.{% endblock %}
+
+{% block content %}
+<section class="container py-5 my-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 legal-content reveal">
+      <p class="eyebrow">Confidentialité</p>
+      <h1 class="display-6 fw-bold mb-4">Politique de confidentialité</h1>
+
+      <div class="alert-abasse mb-5">
+        Ce document décrit les données réellement collectées par ce site à ce jour.
+        Il est recommandé de le faire vérifier par un professionnel avant mise en ligne
+        définitive, notamment si de nouveaux outils (statistiques, publicité) sont ajoutés.
+      </div>
+
+      <h2 class="h4 mt-5">1. Données collectées</h2>
+      <p class="text-body-secondary">
+        Ce site collecte des données personnelles uniquement lorsque vous remplissez
+        volontairement l'un des formulaires suivants :
+      </p>
+      <ul class="text-body-secondary">
+        <li><strong>Formulaire de contact :</strong> nom, email, service souhaité, budget, message.</li>
+        <li><strong>Formulaire de devis :</strong> nom, email, téléphone (optionnel), type de projet, budget, délai souhaité, description du projet.</li>
+        <li><strong>Formulaire de témoignage :</strong> nom, email, entreprise, fonction, note et avis.</li>
+      </ul>
+      <p class="text-body-secondary">
+        Aucune donnée bancaire n'est collectée sur ce site.
+      </p>
+
+      <h2 class="h4 mt-5">2. Finalité du traitement</h2>
+      <p class="text-body-secondary">
+        Ces informations sont utilisées exclusivement pour répondre à votre demande,
+        établir un devis, ou publier votre témoignage (après votre accord et validation).
+        Elles ne sont ni vendues, ni cédées, ni utilisées à des fins commerciales tierces.
+      </p>
+
+      <h2 class="h4 mt-5">3. Durée de conservation</h2>
+      <p class="text-body-secondary">
+        Les messages et demandes sont conservés le temps nécessaire au traitement de votre
+        demande, puis archivés ou supprimés dans un délai raisonnable. Vous pouvez demander
+        leur suppression à tout moment (voir « Vos droits » ci-dessous).
+      </p>
+
+      <h2 class="h4 mt-5">4. Cookies et services tiers</h2>
+      <p class="text-body-secondary">
+        Ce site n'utilise pas d'outil de suivi publicitaire ni d'analyse d'audience à ce
+        jour. Si une carte Google Maps est intégrée sur la page Contact, Google peut déposer
+        des cookies techniques liés à cet affichage, conformément à sa propre politique de
+        confidentialité.
+      </p>
+
+      <h2 class="h4 mt-5">5. Vos droits</h2>
+      <p class="text-body-secondary">
+        Conformément au Règlement Général sur la Protection des Données (RGPD), vous
+        disposez d'un droit d'accès, de rectification et de suppression de vos données
+        personnelles. Pour exercer ce droit,
+        <a href="{% url 'contact' %}">contactez-moi via le formulaire du site</a>{% if profile.email %} ou par email à
+        <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>{% endif %}.
+      </p>
+
+      <h2 class="h4 mt-5">6. Sécurité</h2>
+      <p class="text-body-secondary">
+        Des mesures raisonnables sont mises en œuvre pour protéger vos données contre tout
+        accès, modification ou divulgation non autorisés.
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}

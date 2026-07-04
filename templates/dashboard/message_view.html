@@ -1,0 +1,36 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% block title %}Message de {{ message.name }} | Tableau de bord{% endblock %}
+{% block meta_robots %}noindex, nofollow{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <a href="{% url 'dashboard:dashboard_messages' %}" class="btn btn-light btn-sm mb-4">&larr; Retour aux messages</a>
+
+  <div class="card-flat">
+    <div class="text-body-secondary small mb-2">
+      {{ message.created|date:'d/m/Y H:i' }} {% if message.is_quote_request %}&middot; Demande de devis{% endif %}
+    </div>
+    <h1 class="h4">{{ message.name }}</h1>
+    <p class="text-body-secondary">
+      <a href="mailto:{{ message.email }}">{{ message.email }}</a>
+      {% if message.phone %} &middot; {{ message.phone }}{% endif %}
+    </p>
+    <ul class="list-unstyled text-body-secondary mb-4">
+      {% if message.service %}<li><strong>Service :</strong> {{ message.service }}</li>{% endif %}
+      {% if message.get_project_type_display %}<li><strong>Type de projet :</strong> {{ message.get_project_type_display }}</li>{% endif %}
+      {% if message.budget %}<li><strong>Budget :</strong> {{ message.budget }} €</li>{% endif %}
+      {% if message.get_deadline_display %}<li><strong>Délai souhaité :</strong> {{ message.get_deadline_display }}</li>{% endif %}
+    </ul>
+    <p style="white-space: pre-wrap;">{{ message.body }}</p>
+
+    <form method="post" class="mt-4 d-flex align-items-center gap-2">
+      {% csrf_token %}
+      <div class="form-check">
+        {{ form.is_read }}
+        <label class="form-check-label" for="{{ form.is_read.id_for_label }}">Marqué comme lu</label>
+      </div>
+      <button class="btn btn-dark btn-sm" type="submit">Enregistrer</button>
+      <a class="btn btn-light btn-sm" href="mailto:{{ message.email }}">Répondre par email</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

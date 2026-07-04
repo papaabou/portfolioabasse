@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/thank_for_submission.css' %}?v={{ static_version }}" />
+{% endblock %}
+
+{% block content %}
+<section class="thank-you-block">
+    <div class="section-title" style="justify-content: center;">
+        {{ subheading }}
+    </div>
+
+    <h1 class="display-text">
+        {{ heading }}
+    </h1>
+
+    <p>
+        {{ message }}
+    </p>
+
+    <div class="next-steps">
+        <a href="{% url 'home' %}" class="btn-link" style="color: var(--primary);">
+            &larr; Return to Home
+        </a>
+
+        {% if not project %}
+        <a href="{% url 'post_list' %}" class="btn-link">
+            Read the Latest Journal &rarr;
+        </a>
+        {% endif %}
+        
+        {% if project %}
+        <a class="btn-link" href="{% url 'project_detail' project.slug %}">You can view the project here &rarr;</a>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

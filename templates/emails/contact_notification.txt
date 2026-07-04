@@ -1,0 +1,14 @@
+{% if message.is_quote_request %}Nouvelle demande de devis{% else %}Nouveau message de contact{% endif %}
+
+Nom : {{ message.name }}
+Email : {{ message.email }}
+{% if message.phone %}Téléphone : {{ message.phone }}
+{% endif %}{% if message.service %}Service : {{ message.service }}
+{% endif %}{% if message.get_project_type_display %}Type de projet : {{ message.get_project_type_display }}
+{% endif %}{% if message.budget %}Budget estimé : {{ message.budget }} €
+{% endif %}{% if message.get_deadline_display %}Délai souhaité : {{ message.get_deadline_display }}
+{% endif %}
+Message :
+{{ message.body }}
+
+Envoyé le {{ message.created }} depuis le site abasseniang.fr

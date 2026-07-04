@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Nouveau témoignage reçu</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+    <h2>Nouveau témoignage reçu</h2>
+
+    <p>Un nouveau témoignage a été soumis sur le site portfolio.</p>
+
+    <h3>Détails</h3>
+    <ul>
+        <li><strong>Nom :</strong> {{ testimonial.name }}</li>
+        <li><strong>Email :</strong> {{ testimonial.email|default:"Non renseigné" }}</li>
+        <li><strong>Entreprise :</strong> {{ testimonial.company|default:"Non renseignée" }}</li>
+        <li><strong>Rôle :</strong> {{ testimonial.role|default:"Non renseigné" }}</li>
+        <li><strong>Note :</strong> {{ testimonial.rating }}/5</li>
+        {% if project %}
+            <li><strong>Projet :</strong> {{ project.title }}</li>
+        {% else %}
+            <li><strong>Projet :</strong> Non spécifié</li>
+        {% endif %}
+    </ul>
+
+    <h3>Témoignage</h3>
+    <blockquote style="border-left: 4px solid #ddd; padding-left: 12px; color: #555;">
+        {{ testimonial.body }}
+    </blockquote>
+
+    <p>
+        Ce témoignage est <strong>en attente d'approbation</strong>.<br>
+        Merci de le valider depuis l'administration Django.
+    </p>
+</body>
+</html>

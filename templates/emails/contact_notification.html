@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Nouveau message reçu</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #1a1a1a;">
+    <h2>{% if message.is_quote_request %}Nouvelle demande de devis{% else %}Nouveau message de contact{% endif %}</h2>
+
+    <p><strong>Nom :</strong> {{ message.name }}</p>
+    <p><strong>Email :</strong> {{ message.email }}</p>
+
+    {% if message.phone %}
+        <p><strong>Téléphone :</strong> {{ message.phone }}</p>
+    {% endif %}
+
+    {% if message.service %}
+        <p><strong>Service :</strong> {{ message.service }}</p>
+    {% endif %}
+
+    {% if message.get_project_type_display %}
+        <p><strong>Type de projet :</strong> {{ message.get_project_type_display }}</p>
+    {% endif %}
+
+    {% if message.budget %}
+        <p><strong>Budget estimé :</strong> {{ message.budget }} €</p>
+    {% endif %}
+
+    {% if message.get_deadline_display %}
+        <p><strong>Délai souhaité :</strong> {{ message.get_deadline_display }}</p>
+    {% endif %}
+
+    <hr>
+
+    <p><strong>Message :</strong></p>
+    <p>{{ message.body|linebreaks }}</p>
+
+    <hr>
+
+    <p style="color: #666; font-size: 12px;">
+        Envoyé le {{ message.created|date:"d/m/Y à H:i" }} depuis le site abasseniang.fr
+    </p>
+</body>
+</html>

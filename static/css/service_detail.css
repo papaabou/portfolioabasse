@@ -1,0 +1,38 @@
+.service-detail-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.6rem;
+  border: 2px solid var(--text);
+  box-shadow: var(--hard-shadow-sm);
+}
+
+.process-step {
+  height: 100%;
+}
+.process-step .step-number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+}
+.deliverables-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.deliverables-list li {
+  padding: 16px 18px;
+  background: var(--panel);
+  border: 2px solid var(--text);
+  border-radius: var(--radius);
+  font-weight: 600;
+}

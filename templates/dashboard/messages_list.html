@@ -1,0 +1,35 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% block title %}Messages | Tableau de bord{% endblock %}
+{% block meta_robots %}noindex, nofollow{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">Messages &amp; demandes de devis</h1>
+    <a href="{% url 'dashboard:dashboard_index' %}" class="btn btn-light btn-sm">&larr; Tableau de bord</a>
+  </div>
+
+  <div class="row g-3">
+    {% for m in messages_page %}
+    <div class="col-12">
+      <div class="card-flat d-flex flex-row justify-content-between align-items-center flex-wrap gap-2">
+        <div>
+          <div class="text-body-secondary small">{{ m.created|date:'d/m/Y H:i' }} {% if m.is_quote_request %}&middot; Devis{% endif %} {% if not m.is_read %}&middot; <span style="color:var(--accent); font-weight:700;">non lu</span>{% endif %}</div>
+          <strong>{{ m.name }}</strong> — {{ m.email }}
+          <p class="text-body-secondary mb-0">{{ m.body|truncatechars:120 }}</p>
+        </div>
+        <a class="btn btn-light btn-sm" href="{% url 'dashboard:dashboard_message_view' m.pk %}">Ouvrir</a>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-body-secondary">Aucun message pour le moment.</p>
+    {% endfor %}
+  </div>
+
+  {% if messages_page.has_other_pages %}
+  <div class="d-flex justify-content-center gap-3 mt-4">
+    {% if messages_page.has_previous %}<a class="btn btn-light" href="?page={{ messages_page.previous_page_number }}">&larr; Précédent</a>{% endif %}
+    {% if messages_page.has_next %}<a class="btn btn-light" href="?page={{ messages_page.next_page_number }}">Suivant &rarr;</a>{% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

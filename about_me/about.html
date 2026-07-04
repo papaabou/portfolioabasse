@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}A propos | {{ site_settings.site_title|default:"Graphiste" }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/about_me.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="about-page">
+  <div class="about-media">
+    {% if profile.profile_image %}
+      <img src="{{ profile.profile_image.url }}" alt="{{ profile.full_name }}">
+    {% else %}
+      <div class="image-placeholder">Portrait</div>
+    {% endif %}
+  </div>
+  <div class="about-copy">
+    <p class="eyebrow">A propos</p>
+    <h1>{{ profile.full_name|default:"Graphiste independant" }}</h1>
+    <div class="about-text">
+      <p>{{ profile.short_bio|default:"J'accompagne les marques, independants et projets culturels dans la creation d'univers visuels coherents, sobres et memorables." }}</p>
+      {% if profile.philosophy %}
+        <p>{{ profile.philosophy }}</p>
+      {% endif %}
+    </div>
+
+    {% if profile.skills.all %}
+      <div class="skill-cloud">
+        {% for skill in profile.skills.all %}
+          <span>{{ skill.name }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <a class="btn btn-dark" href="{% url 'contact' %}">Discuter d'un projet</a>
+  </div>
+</section>
+{% endblock %}

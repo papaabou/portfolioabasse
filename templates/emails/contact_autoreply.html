@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Message reçu</title></head>
+<body style="font-family: Arial, sans-serif; color: #1a1a1a;">
+    <p>Bonjour {{ message.name }},</p>
+
+    <p>
+        {% if message.is_quote_request %}
+        Merci pour votre demande de devis ! Je l'ai bien reçue et je reviens vers vous
+        sous 24 à 48h avec une proposition adaptée à votre projet.
+        {% else %}
+        Merci pour votre message ! Je l'ai bien reçu et je vous réponds sous 24 à 48h.
+        {% endif %}
+    </p>
+
+    <p>À très vite,<br>
+    <strong>Abasse NIANG</strong><br>
+    Graphiste &amp; Créateur Visuel — Créteil</p>
+</body>
+</html>

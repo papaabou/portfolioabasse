@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}R&eacute;alisations | Abasse NIANG — Graphiste &amp; Cr&eacute;ateur Visuel{% endblock %}
+{% block meta_description %}Portfolio d'Abasse NIANG : montages vid&eacute;o, miniatures YouTube, chartes graphiques et projets web design r&eacute;alis&eacute;s &agrave; Cr&eacute;teil.{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/project_list.css' %}?v={{ static_version }}">
+{% endblock %}
+
+{% block content %}
+<section class="portfolio-hero">
+  <p class="eyebrow">R&eacute;alisations</p>
+  <h1>Travaux graphiques, vidéos et contenus digitaux.</h1>
+  <p>Une sélection de visuels, miniatures, chartes graphiques, montages vidéo et projets digitaux.</p>
+</section>
+
+<section class="portfolio-wrap">
+  <div class="filter-bar">
+    <a href="{% url 'project_list' %}" class="{% if not current_category %}active{% endif %}">Tous</a>
+    {% for cat in categories %}
+      <a href="?category={{ cat.slug }}" class="{% if current_category == cat.slug %}active{% endif %}">{{ cat.name }}</a>
+    {% endfor %}
+  </div>
+
+  <div class="portfolio-grid">
+    {% for project in projects %}
+      <a class="portfolio-card" href="{% url 'realisation_detail' project.slug %}">
+        <div class="portfolio-image">
+          {% if project.cover_image %}
+            <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" loading="lazy">
+          {% else %}
+            <div class="image-placeholder">{{ project.title }}</div>
+          {% endif %}
+        </div>
+        <div class="portfolio-meta">
+          <span>{{ project.category.name|default:"Projet" }}{% if project.year %} / {{ project.year }}{% endif %}</span>
+          <h2>{{ project.title }}</h2>
+        </div>
+      </a>
+    {% empty %}
+      <p class="empty-state">Aucun projet publié pour le moment. Ajoutez un projet dans l’admin Django.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

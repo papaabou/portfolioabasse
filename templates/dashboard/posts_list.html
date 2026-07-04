@@ -1,0 +1,29 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% block title %}Blog | Tableau de bord{% endblock %}
+{% block meta_robots %}noindex, nofollow{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <h1 class="h3 mb-0">Gestion du blog</h1>
+    <div class="d-flex gap-2">
+      <a href="{% url 'dashboard:dashboard_index' %}" class="btn btn-light btn-sm">&larr; Tableau de bord</a>
+      <a href="{% url 'dashboard:dashboard_blog_create' %}" class="btn btn-dark btn-sm">+ Nouvel article</a>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    {% for p in posts %}
+    <div class="col-md-6">
+      <div class="card-flat h-100">
+        <div class="text-body-secondary small">{{ p.created|date:'d/m/Y' }} &middot; {% if p.published %}publié{% else %}brouillon{% endif %}</div>
+        <h2 class="h5 mt-2">{{ p.title }}</h2>
+        <p class="text-body-secondary">{{ p.excerpt|default:p.content|truncatechars:120 }}</p>
+        <a href="{% url 'dashboard:dashboard_blog_edit' p.pk %}" class="btn btn-light btn-sm">Modifier</a>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-body-secondary">Aucun article pour le moment.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

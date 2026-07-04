@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Jonathan Vance | Nexus Systems | AlexDev.{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/client_detail.css' %}?v={{ static_version }}" />
+{% endblock %} 
+{% block content %}
+<div class="profile-grid">
+            
+  <!-- Sidebar with Media & Details -->
+  <aside class="profile-sidebar">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800" alt="Jonathan Vance" class="main-img">
+      
+      <div class="contact-card">
+          <h3>Direct Contact</h3>
+          <div class="contact-list">
+              <div class="contact-item">
+                  <label>Email</label>
+                  <a href="mailto:jonathan@nexus.io">jonathan@nexus.io</a>
+              </div>
+              <div class="contact-item">
+                  <label>WhatsApp</label>
+                  <a href="https://wa.me/15550123456">+1 555 012 3456</a>
+              </div>
+              <div class="contact-item">
+                  <label>Website</label>
+                  <a href="#" target="_blank">nexus.io</a>
+              </div>
+          </div>
+
+          <div class="social-grid">
+              <a href="#" class="social-icon" title="LinkedIn">IN</a>
+              <a href="#" class="social-icon" title="Facebook">FB</a>
+              <a href="#" class="social-icon" title="Twitter">TW</a>
+          </div>
+      </div>
+  </aside>
+
+  <!-- Main Content -->
+  <section class="profile-story">
+      <div class="story-header">
+          <span class="company-badge">Nexus Systems Inc.</span>
+          <h1 class="profile-title">Jonathan <i>Vance.</i></h1>
+          <p class="partnership-overview">
+              Building the future of enterprise data management with a focus on human-centric interactions.
+          </p>
+      </div>
+
+      <div class="content-section">
+          <h4>The Challenge</h4>
+          <p>
+              Nexus Systems approached me with a fragmented legacy ecosystem that hindered their operational speed. The primary goal was to unify their technical architecture while providing a premium experience for their high-tier enterprise clients.
+          </p>
+      </div>
+
+      <div class="content-section">
+          <h4>The Result</h4>
+          <p>
+              Over an 18-month collaboration, we successfully launched a unified dashboard platform that reduced user task completion time by 60%. The relationship continues today as I serve as their primary technical design consultant.
+          </p>
+      </div>
+
+      <div class="content-section" style="background: #1C1917; color: white; padding: 40px; border-radius: var(--radius);">
+          <p style="font-style: italic; font-family: var(--font-head); font-size: 1.5rem; color: #E7E5E4;">
+              "Alex doesn't just write code; he architected a vision that changed how our entire organization perceives data. A truly rare talent."
+          </p>
+          <p style="margin-top: 20px; font-weight: 700; color: var(--primary);">— Jonathan Vance, CEO</p>
+      </div>
+  </section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Clients & Partners{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/client_list.css' %}?v={{ static_version }}" />
+{% endblock %} 
+{% block content %}
+<header class="hero">
+    <p class="section-title">Trusted Partnerships</p>
+    <h1 class="display-text">Collaborating with <i>Visionaries.</i></h1>
+</header>
+
+<section class="client-grid">
+{% if clients %}
+  {% for client in clients %}
+  <a href="{% url 'client_detail' client.id %}" class="client-card">
+      <div class="client-header">
+          {% if client.profile_image %}
+          <img src="{{ client.profile_image.url }}" class="client-img" alt="{{ client.name }}">
+          {% endif %}
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200" alt="Jonathan" class="client-img">
+          <div>
+              <h3 class="client-name">{{ client.name }}</h3>
+              <p class="client-company">{{ client.company_name }}</p>
+          </div>
+      </div>
+      <p class="client-excerpt">
+          Spearheaded the complete architectural overhaul of their enterprise dashboard, improving performance by 40% across all global nodes.
+      </p>
+      <span class="view-profile">View Partnership &rarr;</span>
+  </a>
+  {% endfor %}
+{% else %}
+<p>No clients yet.</p>
+{% endif %}
+</section>
+
+
+{% if clients.has_other_pages %}
+<div style="text-align: center; margin-bottom: 60px;">
+  {% if clients.has_previous %}
+    <a href="?page={{ clients.previous_page_number }}" class="btn-link">
+      &larr; Previous
+    </a>
+    &nbsp;&nbsp;&nbsp;
+  {% endif %}
+  {% if clients.has_next %}
+    <a href="?page={{ clients.next_page_number }}" class="btn-link">
+      Next &rarr;
+    </a>
+  {% endif %}
+</div>
+{% endif %}
+
+{% endblock %}

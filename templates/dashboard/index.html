@@ -1,0 +1,57 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% block title %}Tableau de bord | Abasse NIANG{% endblock %}
+{% block meta_robots %}noindex, nofollow{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row g-4 mb-4">
+    <div class="col-md-3 col-6">
+      <div class="card-flat text-center">
+        <div class="display-6 fw-bold" style="color:var(--accent);">{{ unread_count }}</div>
+        <p class="text-body-secondary mb-0">Message(s) non lu(s)</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="card-flat text-center">
+        <div class="display-6 fw-bold">{{ project_count }}</div>
+        <p class="text-body-secondary mb-0">Projets au total</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="card-flat text-center">
+        <div class="display-6 fw-bold" style="color:var(--accent);">{{ pending_testimonials_count }}</div>
+        <p class="text-body-secondary mb-0">Témoignage(s) en attente</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="card-flat d-flex flex-column justify-content-center gap-2 h-100">
+        <a href="/admin/" class="btn btn-light btn-sm">Administration complète</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-wrap gap-2 mb-5">
+    <a href="{% url 'dashboard:dashboard_messages' %}" class="btn btn-dark">Messages &amp; devis</a>
+    <a href="{% url 'dashboard:dashboard_projects' %}" class="btn btn-light">Réalisations</a>
+    <a href="{% url 'dashboard:dashboard_testimonials' %}" class="btn btn-light">Témoignages</a>
+    <a href="{% url 'dashboard:dashboard_blog' %}" class="btn btn-light">Blog</a>
+    <a href="{% url 'dashboard:dashboard_services' %}" class="btn btn-light">Services</a>
+  </div>
+
+  <h2 class="h4 mb-3">Derniers messages</h2>
+  <div class="card-flat p-0">
+    <ul class="list-group list-group-flush">
+      {% for m in latest_messages %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ m.name }}</strong> — {{ m.email }}
+          {% if not m.is_read %}<span class="badge ms-2" style="background:var(--accent);">nouveau</span>{% endif %}
+        </div>
+        <a href="{% url 'dashboard:dashboard_message_view' m.pk %}" class="btn btn-light btn-sm">Ouvrir</a>
+      </li>
+      {% empty %}
+      <li class="list-group-item">Aucun message pour le moment.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

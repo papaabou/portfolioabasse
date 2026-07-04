@@ -1,0 +1,51 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% block title %}Témoignages | Tableau de bord{% endblock %}
+{% block meta_robots %}noindex, nofollow{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <h1 class="h3 mb-0">Témoignages</h1>
+    <a href="{% url 'dashboard:dashboard_index' %}" class="btn btn-light btn-sm">&larr; Tableau de bord</a>
+  </div>
+
+  <div class="row g-3">
+    {% for t in testimonials %}
+    <div class="col-12">
+      <div class="card-flat">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+          <div>
+            <div class="text-body-secondary small">
+              {{ t.created|date:'d/m/Y' }}
+              {% if t.project %} &middot; {{ t.project.title }}{% endif %}
+              &middot; {% if t.approved %}<span style="color:#1a7f37; font-weight:700;">publié</span>{% else %}<span style="color:var(--accent); font-weight:700;">en attente</span>{% endif %}
+            </div>
+            <strong>{{ t.name }}</strong>{% if t.role or t.company %} — {{ t.role }}{% if t.role and t.company %}, {% endif %}{{ t.company }}{% endif %}
+            <div class="stars small">{% for i in "12345" %}{% if forloop.counter <= t.rating %}&#9733;{% else %}&#9734;{% endif %}{% endfor %}</div>
+            <p class="text-body-secondary mb-0 mt-2">{{ t.body|truncatechars:220 }}</p>
+          </div>
+          <div class="d-flex flex-column gap-2" style="min-width:140px;">
+            {% if not t.approved %}
+            <form method="post" action="{% url 'dashboard:dashboard_testimonial_approve' t.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-dark btn-sm w-100">Approuver</button>
+            </form>
+            {% else %}
+            <form method="post" action="{% url 'dashboard:dashboard_testimonial_decline' t.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-light btn-sm w-100">Dépublier</button>
+            </form>
+            {% endif %}
+            <form method="post" action="{% url 'dashboard:dashboard_testimonial_delete' t.pk %}" onsubmit="return confirm('Supprimer ce témoignage définitivement ?');">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-light btn-sm w-100">Supprimer</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-body-secondary">Aucun témoignage pour le moment.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

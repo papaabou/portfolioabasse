@@ -1,0 +1,12 @@
+Bonjour {{ testimonial.name }},
+
+Merci beaucoup d'avoir pris le temps de partager votre expérience. Votre témoignage a bien été reçu.
+
+{% if project %}Projet concerné : {{ project.title }}{% endif %}
+
+Il sera publié sur le site après validation.
+
+Merci sincèrement pour votre confiance et vos mots.
+
+Bien à vous,
+{{ sender_name|default:"Abasse NIANG" }}

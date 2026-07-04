@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ service.title }} | Abasse NIANG{% endblock %}
+{% block meta_description %}{{ service.meta_description|default:service.description|truncatewords:25 }}{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/service_detail.css' %}?v={{ static_version }}" />
+{% endblock %}
+
+{% block content %}
+<section class="container py-5 reveal">
+  {% if service.icon %}<div class="service-detail-icon"><i class="bi {{ service.icon }}"></i></div>{% endif %}
+  <p class="eyebrow">Service {{ service.order|stringformat:"02d" }}</p>
+  <h1 class="display-5 mb-3" style="text-transform:uppercase;">{{ service.title }}</h1>
+  {% if service.description %}<p class="text-body-secondary fs-5" style="max-width:760px;">{{ service.description }}</p>{% endif %}
+</section>
+
+{% if service.deliverables.exists %}
+<section class="container pb-5 reveal">
+  <h2 class="h3 mb-4">Ce que vous recevez</h2>
+  <ul class="deliverables-list">
+    {% for item in service.deliverables.all %}
+    <li>{{ item.name }}</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if service.process_steps.exists %}
+<section class="container pb-5 reveal">
+  <h2 class="h3 mb-4">La méthode</h2>
+  <div class="row g-4">
+    {% for step in service.process_steps.all %}
+    <div class="col-md-4">
+      <div class="card-flat process-step">
+        <div class="step-number">{{ forloop.counter|stringformat:"02d" }}</div>
+        <h3 class="h5 mt-3">{{ step.title }}</h3>
+        <p class="text-body-secondary mb-0">{{ step.description }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if service.projects.exists %}
+<section class="container pb-5 reveal">
+  <h2 class="h3 mb-4">Projets liés</h2>
+  <div class="row g-4">
+    {% for project in service.projects.all %}
+    <div class="col-md-6 col-lg-4">
+      <a href="{% url 'project_detail' project.slug %}" class="card-flat d-block text-decoration-none p-0 overflow-hidden h-100">
+        {% if project.cover_image %}
+        <div class="ratio ratio-4x3">
+          <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" loading="lazy">
+        </div>
+        {% endif %}
+        <div class="p-3">
+          <h3 class="h6 mb-0" style="color:var(--text);">{{ project.title }}</h3>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="container pb-5 reveal">
+  <div class="card-flat">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <h2 class="h3">Démarrer ce projet</h2>
+        <p class="text-body-secondary">
+          Je prends un nombre limité de projets à la fois pour garantir un travail
+          soigné. Décrivez-moi votre besoin, votre délai et votre budget indicatif :
+          je reviens vers vous rapidement avec une proposition claire.
+        </p>
+        <div class="d-flex flex-column gap-2 mt-4">
+          {% if profile.email %}<a class="fw-bold" href="mailto:{{ profile.email }}"><i class="bi bi-envelope me-2"></i>{{ profile.email }}</a>{% endif %}
+          {% if profile.phone %}<a class="fw-bold" href="tel:{{ profile.phone|cut:" " }}"><i class="bi bi-telephone me-2"></i>{{ profile.phone }}</a>{% endif %}
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label" for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+              {{ form.name }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+              {{ form.email }}
+            </div>
+            {{ form.service }}
+            <div class="col-md-6">
+              <label class="form-label" for="{{ form.budget.id_for_label }}">{{ form.budget.label }}</label>
+              {{ form.budget }}
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="{{ form.body.id_for_label }}">{{ form.body.label }}</label>
+              {{ form.body }}
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-dark">Envoyer ma demande</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

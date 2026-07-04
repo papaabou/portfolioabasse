@@ -1,0 +1,24 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% block title %}Site Settings{% endblock %}
+{% block content %}
+<div class="dashboard-grid">
+  <aside class="dashboard-aside">
+    <h3>Admin</h3>
+    <a class="nav-item" href="{% url 'dashboard_index' %}">Overview</a>
+  </aside>
+  <section class="dashboard-main">
+    <div class="form-card">
+      <form method="post">{% csrf_token %}
+        {% for field in form %}
+          <div class="row">
+            <label for="id_{{ field.name }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}<div class="muted">{{ field.help_text }}</div>{% endif %}
+          </div>
+        {% endfor %}
+        <button class="btn" type="submit">Save</button>
+      </form>
+    </div>
+  </section>
+</div>
+{% endblock %}

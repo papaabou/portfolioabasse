@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Galerie | Abasse NIANG — Graphiste &amp; Créateur Visuel{% endblock %}
+{% block meta_description %}Galerie visuelle des créations d'Abasse NIANG : miniatures, chartes graphiques, visuels de marque et captures de projets vidéo.{% endblock %}
+
+{% block content %}
+<header class="container py-5 text-center reveal">
+  <p class="eyebrow d-block">Galerie</p>
+  <h1 class="display-5" style="text-transform:uppercase;">Un aperçu en images</h1>
+</header>
+
+<section class="container pb-5">
+  <div class="d-flex flex-wrap gap-2 justify-content-center mb-5 reveal">
+    <button type="button" class="pill-filter active" data-gallery-filter="all">Tout</button>
+    {% for cat in categories %}
+    <button type="button" class="pill-filter" data-gallery-filter="{{ cat.slug }}">{{ cat.name }}</button>
+    {% endfor %}
+  </div>
+
+  <div class="row g-3">
+    {% for item in items %}
+    <div class="col-6 col-md-4 col-lg-3 reveal" data-gallery-item data-category="{{ item.category_slug }}">
+      <button type="button"
+              class="d-block w-100 p-0 border-0 bg-transparent"
+              style="cursor: zoom-in;"
+              data-bs-toggle="modal"
+              data-bs-target="#galleryLightbox"
+              data-lightbox-src="{{ item.image.url }}"
+              data-lightbox-caption="{{ item.caption }}">
+        <div class="ratio ratio-1x1 border border-2" style="border-color: var(--text) !important; border-radius: var(--radius); overflow:hidden;">
+          <img src="{{ item.image.url }}" alt="{{ item.caption }}" loading="lazy">
+        </div>
+      </button>
+    </div>
+    {% empty %}
+    <div class="col-12">
+      <p class="text-center text-body-secondary">La galerie arrive bientôt.</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<div class="modal fade" id="galleryLightbox" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+      <div class="modal-body pt-0 text-center">
+        <img src="" alt="" class="img-fluid" style="border-radius: var(--radius);">
+        <p class="lightbox-caption text-body-secondary mt-3 mb-0"></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

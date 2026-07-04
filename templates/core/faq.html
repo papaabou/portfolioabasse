@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}FAQ | Abasse NIANG — Graphiste &amp; Créateur Visuel{% endblock %}
+{% block meta_description %}Questions fréquentes sur les prestations d'Abasse NIANG : délais, tarifs, révisions, montage vidéo, miniatures et charte graphique.{% endblock %}
+
+{% block content %}
+<section class="container py-5 my-4">
+  <div class="row justify-content-center text-center mb-5 reveal">
+    <div class="col-lg-8">
+      <p class="eyebrow">FAQ</p>
+      <h1 class="display-5 fw-bold">Questions fréquentes</h1>
+      <p class="text-body-secondary mt-3">
+        Une autre question ? <a href="{% url 'contact' %}" class="grad-text fw-bold">Contactez-moi</a>.
+      </p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      {% if faqs %}
+      <div class="accordion reveal" id="faqAccordion">
+        {% for item in faqs %}
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeading{{ forloop.counter }}">
+            <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faqCollapse{{ forloop.counter }}"
+                    aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                    aria-controls="faqCollapse{{ forloop.counter }}">
+              {{ item.question }}
+            </button>
+          </h2>
+          <div id="faqCollapse{{ forloop.counter }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+               aria-labelledby="faqHeading{{ forloop.counter }}" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">{{ item.answer|linebreaks }}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="text-body-secondary text-center">Les questions fréquentes arrivent bientôt.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,7 @@
+Bonjour {{ message.name }},
+
+{% if message.is_quote_request %}Merci pour votre demande de devis ! Je l'ai bien reçue et je reviens vers vous sous 24 à 48h avec une proposition adaptée à votre projet.{% else %}Merci pour votre message ! Je l'ai bien reçu et je vous réponds sous 24 à 48h.{% endif %}
+
+À très vite,
+Abasse NIANG
+Graphiste & Créateur Visuel — Créteil

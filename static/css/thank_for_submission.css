@@ -1,0 +1,46 @@
+/* --- PAGE SPECIFIC STYLES --- */
+.thank-you-block {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--gap-lg) 0;
+    margin-top: -50px; /* Adjust for padding-top on body */
+}
+.thank-you-block h1 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+.thank-you-block .display-text {
+    font-size: clamp(2rem, 5vw, 4rem); 
+    max-width: 800px;
+    margin-bottom: 30px;
+}
+.thank-you-block p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+.next-steps {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-socials {
+    display: flex; justify-content: space-between; 
+    padding-bottom: 40px; 
+    font-size: 0.9rem; 
+    color: var(--text-muted);
+}
+
+
+/* --- MOBILE --- */
+@media (max-width: 1024px) {
+    .next-steps { flex-direction: column; gap: 15px; }
+    .thank-you-block { padding: var(--gap-md) 0; }
+}

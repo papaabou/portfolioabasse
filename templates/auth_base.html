@@ -1,0 +1,24 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Accounts{% endblock %}</title>
+  <!-- Importing Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}?v={{ static_version }}">
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}?v={{ static_version }}">
+  <link rel="stylesheet" href="{% static 'css/contact.css' %}?v={{ static_version }}">
+</head>
+<body>
+  <main class="container">
+
+    {% block content %}{% endblock %}
+
+  </main>
+
+</body>
+</html>

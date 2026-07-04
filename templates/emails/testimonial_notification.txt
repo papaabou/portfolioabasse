@@ -1,0 +1,15 @@
+Un nouveau témoignage a été soumis sur le site portfolio.
+
+Nom : {{ testimonial.name }}
+Email : {{ testimonial.email|default:"Non renseigné" }}
+Entreprise : {{ testimonial.company|default:"Non renseignée" }}
+Rôle : {{ testimonial.role|default:"Non renseigné" }}
+Note : {{ testimonial.rating }}/5
+{% if project %}Projet : {{ project.title }}{% else %}Projet : Non spécifié{% endif %}
+
+Témoignage :
+{{ testimonial.body }}
+
+---
+Ce témoignage est en attente d'approbation.
+Vous pouvez le valider depuis l'administration Django.

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ project.title }} | {{ site_settings.site_title|default:"Portfolio" }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/project_details.css' %}">
+{% endblock %}
+
+{% block content %}
+<article class="project-page">
+  <header class="project-hero">
+    <div>
+      <p class="eyebrow">{{ project.category.name|default:"Projet graphique" }}</p>
+      <h1>{{ project.title }}</h1>
+      {% if project.excerpt %}
+        <p class="project-intro">{{ project.excerpt }}</p>
+      {% endif %}
+    </div>
+    <dl class="project-facts">
+      <div>
+        <dt>Client</dt>
+        <dd>{{ project.client.name|default:"Confidentiel" }}</dd>
+      </div>
+      <div>
+        <dt>Annee</dt>
+        <dd>{{ project.year|default:"-" }}</dd>
+      </div>
+      <div>
+        <dt>Services</dt>
+        <dd>
+          {% for service in project.services.all %}
+            {{ service.title }}{% if not forloop.last %}, {% endif %}
+          {% empty %}
+            Direction artistique
+          {% endfor %}
+        </dd>
+      </div>
+    </dl>
+  </header>
+
+  <section class="cover-section">
+    {% if project.cover_image %}
+      <img src="{{ project.cover_image.url }}" alt="{{ project.title }}">
+    {% else %}
+      <div class="image-placeholder">{{ project.title }}</div>
+    {% endif %}
+  </section>
+
+  <section class="project-content">
+    <div>
+      <p class="eyebrow">Contexte</p>
+      <h2>Le projet</h2>
+    </div>
+    <div class="rich-text">
+      {{ project.description|default:project.hero_description|linebreaks }}
+      <div class="project-links">
+        {% if project.live_url %}
+          <a class="btn btn-dark" href="{{ project.live_url }}" target="_blank" rel="noopener">Voir le lien</a>
+        {% endif %}
+        {% if project.video_url %}
+          <a class="btn btn-light" href="{{ project.video_url }}" target="_blank" rel="noopener">Voir la video</a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  {% if project.video_embed_url %}
+    <section class="video-section">
+      <iframe src="{{ project.video_embed_url }}" title="Video du projet {{ project.title }}" allowfullscreen></iframe>
+    </section>
+  {% endif %}
+
+  {% if project.images.all %}
+    <section class="gallery-section">
+      {% for item in project.images.all %}
+        <figure>
+          <img src="{{ item.image.url }}" alt="{{ item.caption|default:project.title }}" loading="lazy">
+          {% if item.caption %}<figcaption>{{ item.caption }}</figcaption>{% endif %}
+        </figure>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+  <nav class="project-nav">
+    <a href="{% url 'project_list' %}">Retour au portfolio</a>
+    {% if next_project %}
+      <a href="{% url 'project_detail' next_project.slug %}">Projet suivant</a>
+    {% endif %}
+  </nav>
+</article>
+{% endblock %}

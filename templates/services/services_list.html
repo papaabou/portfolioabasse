@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Services | Abasse NIANG — Graphiste &amp; Créateur Visuel{% endblock %}
+{% block meta_description %}Création visuelle, montage vidéo, miniatures YouTube, charte graphique, web design et photo — les services d'Abasse NIANG.{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/service_list.css' %}?v={{ static_version }}" />
+{% endblock %}
+{% block content %}
+<header class="container py-5 text-center reveal">
+  <p class="eyebrow d-block">Services</p>
+  <h1 class="display-5" style="text-transform:uppercase;">Des visuels pensés pour convertir</h1>
+</header>
+
+<section class="container pb-5">
+  <div class="row g-4">
+    {% for service in services %}
+    <div class="col-md-6 col-lg-4 reveal">
+      <a href="{% url 'service_detail' service.slug %}" class="service-card d-block text-decoration-none h-100">
+        <div class="service-card-media">
+          <div class="service-card-media-frame">
+            {% if service.sample_image_url %}
+              <img src="{{ service.sample_image_url }}" alt="{{ service.title }}" loading="lazy">
+            {% else %}
+              <div class="service-card-media-empty"><i class="bi {{ service.icon|default:'bi-stars' }}"></i></div>
+            {% endif %}
+          </div>
+          <div class="service-card-icon"><i class="bi {{ service.icon|default:'bi-stars' }}"></i></div>
+        </div>
+        <div class="service-card-body">
+          <div class="service-number">{{ forloop.counter|stringformat:"02d" }}</div>
+          <h3 class="h4 mt-3 mb-2" style="color:var(--text);">{{ service.title }}</h3>
+          <p class="text-body-secondary mb-0">{{ service.description }}</p>
+        </div>
+      </a>
+    </div>
+    {% empty %}
+    <div class="col-12">
+      <p class="text-center text-body-secondary">Les services arrivent bientôt.</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if services.has_other_pages %}
+  <div class="d-flex justify-content-center gap-3 mt-5">
+    {% if services.has_previous %}
+      <a class="btn btn-light" href="?page={{ services.previous_page_number }}">&larr; Précédent</a>
+    {% endif %}
+    {% if services.has_next %}
+      <a class="btn btn-light" href="?page={{ services.next_page_number }}">Suivant &rarr;</a>
+    {% endif %}
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

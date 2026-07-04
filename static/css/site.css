@@ -1,0 +1,356 @@
+/* ============================================================
+   SITE.CSS — Bootstrap 5 layer: navbar, footer, CTA buttons,
+   forms, accordion, cards. Loaded after Bootstrap + base.css,
+   reuses the design tokens defined in base.css :root.
+   ============================================================ */
+
+/* ─── SKIP LINK (a11y) ───────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 12px;
+  z-index: 2000;
+  padding: 10px 18px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  border-radius: 4px;
+  transition: top 150ms ease;
+}
+.skip-link:focus { top: 12px; }
+
+/* ─── NAVBAR ─────────────────────────────────────────────────── */
+.navbar-abasse {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1030;
+  padding: 16px var(--side);
+  background: rgba(243, 238, 227, 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 2px solid transparent;
+  transition: background 200ms ease, border-color 200ms ease, padding 200ms ease;
+}
+.navbar-abasse.is-scrolled {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: rgba(243, 238, 227, 0.97);
+  border-bottom-color: var(--text);
+}
+
+.navbar-abasse .navbar-brand {
+  display: grid;
+  gap: 0;
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+.navbar-abasse .navbar-brand span.accent { color: var(--accent); }
+
+.navbar-abasse .nav-link {
+  position: relative;
+  padding: 6px 0;
+  margin: 0 clamp(8px, 1.4vw, 20px);
+  color: var(--muted) !important;
+  font-size: 13px;
+  font-weight: 800;
+  transition: color 180ms ease;
+}
+.navbar-abasse .nav-link::after {
+  position: absolute;
+  right: 0; bottom: 0; left: 0;
+  height: 2px;
+  background: var(--accent);
+  content: "";
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+.navbar-abasse .nav-link:hover,
+.navbar-abasse .nav-link.active { color: var(--text) !important; }
+.navbar-abasse .nav-link:hover::after,
+.navbar-abasse .nav-link.active::after { opacity: 1; transform: scaleX(1); }
+
+.navbar-abasse .btn-nav-cta {
+  margin-left: clamp(8px, 1.4vw, 20px);
+  min-height: 42px;
+  padding: 0 20px;
+  font-size: 12px;
+}
+
+.navbar-abasse .navbar-toggler {
+  border: 2px solid var(--text);
+  border-radius: 4px;
+  color: var(--text);
+  padding: 6px 10px;
+}
+.navbar-abasse .navbar-collapse {
+  background: var(--bg);
+  border-radius: var(--radius);
+  margin-top: 14px;
+  padding: 18px;
+  border: 2px solid var(--text);
+}
+@media (min-width: 992px) {
+  .navbar-abasse .navbar-collapse { background: transparent; border: none; margin: 0; padding: 0; }
+}
+
+body { padding-top: 84px; }
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+.footer-abasse {
+  margin-top: 120px;
+  padding: 72px var(--side) 32px;
+  border-top: 2px solid var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+.footer-abasse .footer-cta h2 {
+  max-width: 800px;
+  margin: 8px 0 28px;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 64px);
+  line-height: 1.02;
+  color: var(--bg);
+  text-transform: uppercase;
+}
+.footer-abasse h5 {
+  margin-bottom: 18px;
+  color: var(--bg);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.footer-abasse ul { list-style: none; margin: 0; padding: 0; }
+.footer-abasse ul li { margin-bottom: 10px; }
+.footer-abasse a {
+  color: rgba(243,238,227,0.66);
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 180ms ease;
+}
+.footer-abasse a:hover { color: var(--accent); }
+.footer-abasse p.footer-bio { color: rgba(243,238,227,0.66); font-size: 14px; max-width: 320px; }
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+.footer-social a {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(243,238,227,0.3);
+  font-size: 18px;
+  transition: border-color 180ms ease, transform 180ms ease, background 180ms ease, filter 180ms ease;
+}
+
+/* Real brand colors per network, so icons stay visible on both the dark
+   footer and light cards (e.g. the Contact page). */
+.footer-social a .bi-behance   { color: #1769FF; }
+.footer-social a .bi-linkedin  { color: #0A66C2; }
+.footer-social a .bi-instagram { color: #E4405F; }
+.footer-social a .bi-tiktok    { color: #FE2C55; }
+.footer-social a .bi-facebook  { color: #1877F2; }
+.footer-social a .bi-youtube   { color: #FF0000; }
+.footer-social a .bi-link-45deg { color: var(--accent); }
+
+.footer-social a:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(243,238,227,0.2);
+  color: rgba(243,238,227,0.5);
+  font-size: 12px;
+}
+.footer-bottom a { color: rgba(243,238,227,0.5); }
+.footer-bottom a:hover { color: var(--accent); }
+
+/* ─── FLOATING CTA BUTTONS ───────────────────────────────────── */
+.fab-stack {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 1040;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fab-btn {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px solid var(--text);
+  color: #fff !important;
+  font-size: 22px;
+  box-shadow: var(--hard-shadow-sm);
+  transition: transform 160ms ease;
+}
+.fab-btn:hover { transform: translate(-2px, -2px); }
+.fab-btn.fab-whatsapp { background: #25D366; }
+.fab-btn.fab-call { background: var(--accent-2); }
+.fab-btn.fab-email { background: var(--accent); }
+
+.back-to-top {
+  display: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--panel);
+  border: 2px solid var(--text);
+  color: var(--text) !important;
+  font-size: 16px;
+}
+.back-to-top.is-visible { display: grid; }
+.back-to-top:hover { background: var(--text); color: var(--bg) !important; }
+
+@media (max-width: 576px) {
+  .fab-stack { right: 14px; bottom: 16px; }
+  .fab-btn { width: 48px; height: 48px; font-size: 19px; }
+}
+
+/* ─── SCROLL REVEAL ──────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ─── FORM CONTROLS (Bootstrap override) ─────────────────────── */
+.form-control,
+.form-select {
+  background: var(--panel);
+  border: 2px solid var(--line-strong);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+}
+.form-control:focus,
+.form-select:focus {
+  background: var(--panel);
+  border-color: var(--text);
+  color: var(--text);
+  box-shadow: 3px 3px 0 var(--accent);
+}
+.form-control::placeholder { color: var(--faint); }
+.form-label {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.form-text { color: var(--faint); }
+.form-check-input {
+  background-color: var(--panel);
+  border: 2px solid var(--line-strong);
+}
+.form-check-input:checked { background-color: var(--accent); border-color: var(--accent); }
+.invalid-feedback { color: var(--accent); font-weight: 700; }
+.form-control.is-invalid, .form-select.is-invalid { border-color: var(--accent); }
+
+/* ─── CARDS (services / testimonials / blog / gallery) ───────── */
+.card-flat {
+  background: var(--panel);
+  border: 2px solid var(--text);
+  border-radius: var(--radius);
+  padding: 32px;
+  height: 100%;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.card-flat:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--hard-shadow);
+}
+
+/* ─── ACCORDION (FAQ) ─────────────────────────────────────────── */
+.accordion-item {
+  background: var(--panel);
+  border: 2px solid var(--text);
+  border-radius: var(--radius) !important;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.accordion-button {
+  background: transparent;
+  color: var(--text);
+  font-weight: 800;
+  font-size: 16px;
+  padding: 22px 24px;
+}
+.accordion-button:not(.collapsed) {
+  background: var(--text);
+  color: var(--bg);
+  box-shadow: none;
+}
+.accordion-button:not(.collapsed)::after {
+  filter: invert(1);
+}
+.accordion-button:focus { box-shadow: none; border-color: var(--text); }
+.accordion-body { color: var(--muted); padding: 4px 24px 24px; line-height: 1.7; }
+
+/* ─── BADGES / PILLS (filters, categories) ───────────────────── */
+.pill-filter {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 2px solid var(--text);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: transparent;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+.pill-filter:hover { background: var(--panel-soft); }
+.pill-filter.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ─── STARS (testimonials rating) ────────────────────────────── */
+.stars { color: var(--gold); letter-spacing: 2px; }
+
+/* ─── MODAL (gallery lightbox) ────────────────────────────────── */
+.modal-content {
+  background: var(--panel);
+  border: 2px solid var(--text);
+  border-radius: var(--radius);
+}
+
+/* ─── ALERTS (form success) ───────────────────────────────────── */
+.alert-abasse {
+  border-radius: var(--radius);
+  border: 2px solid var(--text);
+  background: var(--panel-soft);
+  color: var(--text);
+  padding: 18px 22px;
+}

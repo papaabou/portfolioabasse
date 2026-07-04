@@ -1,0 +1,29 @@
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    margin-top: var(--gap-md);
+}
+.review-card {
+    background: white;
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+.review-quote { font-family: var(--font-head); font-size: 1.4rem; font-style: italic; margin-bottom: 20px; }
+.client-info { display: flex; gap: 15px; align-items: center; margin-top: 30px; }
+.client-info div { 
+    width: 60px; height: 60px; 
+    background: var(--primary); 
+    border-radius: 50%; 
+    /* Placeholder for client avatar */
+    display: flex; justify-content: center; align-items: center;
+    color: white; font-weight: bold;
+}
+.client-info span { font-size: 0.8rem; color: var(--text-muted); }
+
+/* --- MOBILE --- */
+@media (max-width: 1024px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+}

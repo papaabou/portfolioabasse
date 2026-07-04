@@ -1,0 +1,56 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% block title %}{% if post %}Modifier{% else %}Nouvel{% endif %} article | Tableau de bord{% endblock %}
+{% block meta_robots %}noindex, nofollow{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <a href="{% url 'dashboard:dashboard_blog' %}" class="btn btn-light btn-sm mb-4">&larr; Retour au blog</a>
+
+  <div class="card-flat" style="max-width: 720px;">
+    <h1 class="h4 mb-4">{% if post %}Modifier « {{ post.title }} »{% else %}Nouvel article{% endif %}</h1>
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="mb-3">
+          {% if field.field.widget.input_type == "checkbox" %}
+            <div class="form-check">
+              {{ field }}
+              <label class="form-check-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            </div>
+          {% else %}
+            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+          {% endif %}
+          {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+          {% for err in field.errors %}<div class="invalid-feedback d-block">{{ err }}</div>{% endfor %}
+        </div>
+      {% endfor %}
+      <button class="btn btn-dark" type="submit">Enregistrer</button>
+    </form>
+  </div>
+</div>
+<script>
+  (function () {
+    var titleInput = document.getElementById("id_title");
+    var slugInput = document.getElementById("id_slug");
+    if (!titleInput || !slugInput) return;
+
+    function slugify(value) {
+      return value
+        .toString()
+        .normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    }
+
+    var slugTouchedByUser = !!slugInput.value;
+    slugInput.addEventListener("input", function () { slugTouchedByUser = true; });
+    titleInput.addEventListener("input", function () {
+      if (!slugTouchedByUser) {
+        slugInput.value = slugify(titleInput.value);
+      }
+    });
+  })();
+</script>
+{% endblock %}

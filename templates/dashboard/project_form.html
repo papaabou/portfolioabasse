@@ -1,0 +1,97 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% block title %}{% if project %}Modifier{% else %}Nouveau{% endif %} projet | Tableau de bord{% endblock %}
+{% block meta_robots %}noindex, nofollow{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <a href="{% url 'dashboard:dashboard_projects' %}" class="btn btn-light btn-sm mb-4">&larr; Retour aux projets</a>
+
+  <div class="card-flat" style="max-width: 720px;">
+    <h1 class="h4 mb-4">{% if project %}Modifier « {{ project.title }} »{% else %}Nouveau projet{% endif %}</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="mb-3">
+          {% if field.field.widget.input_type == "checkbox" %}
+            <div class="form-check">
+              {{ field }}
+              <label class="form-check-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            </div>
+          {% else %}
+            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+          {% endif %}
+          {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+          {% for err in field.errors %}<div class="invalid-feedback d-block">{{ err }}</div>{% endfor %}
+        </div>
+      {% endfor %}
+      <button class="btn btn-dark" type="submit">Enregistrer</button>
+    </form>
+  </div>
+
+  {% if project %}
+  <div class="card-flat mt-4" style="max-width: 720px;">
+    <h2 class="h5 mb-3">Galerie photos</h2>
+    <p class="text-body-secondary small">Ces photos s'affichent en plus de l'image principale, sur la page du projet et dans la Galerie.</p>
+
+    {% if gallery_images %}
+    <div class="row g-3 mb-4">
+      {% for img in gallery_images %}
+      <div class="col-6 col-md-4">
+        <div class="border rounded overflow-hidden mb-2" style="aspect-ratio:4/3;">
+          <img src="{{ img.image.url }}" alt="{{ img.caption }}" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        {% if img.caption %}<p class="small text-body-secondary mb-2">{{ img.caption }}</p>{% endif %}
+        <form method="post" action="{% url 'dashboard:dashboard_project_image_delete' project.pk img.pk %}" onsubmit="return confirm('Supprimer cette photo ?');">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-light btn-sm w-100">Supprimer</button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'dashboard:dashboard_project_image_add' project.pk %}" enctype="multipart/form-data" class="border-top pt-3">
+      {% csrf_token %}
+      <div class="row g-2 align-items-end">
+        <div class="col-md-5">
+          <label class="form-label" for="{{ image_form.image.id_for_label }}">Nouvelle photo</label>
+          {{ image_form.image }}
+        </div>
+        <div class="col-md-5">
+          <label class="form-label" for="{{ image_form.caption.id_for_label }}">Légende (optionnel)</label>
+          {{ image_form.caption }}
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-dark w-100">Ajouter</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  {% endif %}
+</div>
+<script>
+  (function () {
+    var titleInput = document.getElementById("id_title");
+    var slugInput = document.getElementById("id_slug");
+    if (!titleInput || !slugInput) return;
+
+    function slugify(value) {
+      return value
+        .toString()
+        .normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    }
+
+    var slugTouchedByUser = !!slugInput.value;
+    slugInput.addEventListener("input", function () { slugTouchedByUser = true; });
+    titleInput.addEventListener("input", function () {
+      if (!slugTouchedByUser) {
+        slugInput.value = slugify(titleInput.value);
+      }
+    });
+  })();
+</script>
+{% endblock %}

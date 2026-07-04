@@ -1,0 +1,197 @@
+/* ─── PALETTE — "Atelier graphique" : papier, encre, rouge signal ──── */
+:root {
+  --bg:           #F3EEE3;
+  --panel:        #FFFFFF;
+  --panel-soft:   #EAE3D3;
+  --text:         #16130E;
+  --muted:        #514C42;
+  --faint:        #8C8575;
+
+  --line:         rgba(22,19,14,0.14);
+  --line-strong:  rgba(22,19,14,0.32);
+
+  /* Signature: flat print palette, no gradients */
+  --accent:       #E8391F;
+  --accent-2:     #16130E;
+  --gold:         #E8B400;
+  --gradient:     var(--accent);
+
+  --glow-orange:  rgba(232,57,31,0.22);
+  --glow-violet:  rgba(22,19,14,0.16);
+
+  --hard-shadow:    8px 8px 0 var(--text);
+  --hard-shadow-sm: 5px 5px 0 var(--text);
+
+  --font-display: 'Archivo Black', Inter, Arial, sans-serif;
+
+  --radius:    6px;
+  --radius-lg: 10px;
+  --max:       1440px;
+  --side:      clamp(18px, 4vw, 64px);
+}
+
+/* ─── RESET ──────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, Arial, sans-serif;
+  line-height: 1.45;
+}
+
+a { color: inherit; text-decoration: none; }
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+main { min-height: 80vh; }
+
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+
+/* ─── UTILITIES ──────────────────────────────────────────────────── */
+.eyebrow {
+  margin: 0 0 16px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-family: Inter, Arial, sans-serif;
+}
+
+/* Accent-color text utility (formerly a gradient clip; now flat signal red) */
+.grad-text {
+  color: var(--accent);
+}
+
+/* ─── BUTTONS ────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 26px;
+  border: 2px solid var(--text);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  cursor: pointer;
+}
+
+.btn:hover { transform: translate(-2px, -2px); }
+
+.btn-dark {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+.btn-dark:hover {
+  box-shadow: var(--hard-shadow-sm);
+}
+
+.btn-light {
+  background: transparent;
+  border: 2px solid var(--text);
+  color: var(--text);
+}
+.btn-light:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* ─── IMAGE PLACEHOLDER ──────────────────────────────────────────── */
+.image-placeholder {
+  display: grid;
+  min-height: 280px;
+  place-items: center;
+  background:
+    repeating-linear-gradient(135deg, var(--panel-soft), var(--panel-soft) 12px, var(--panel) 12px, var(--panel) 24px);
+  color: var(--faint);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+
+/* ─── SCROLL ANIMATIONS ──────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.hero-content { animation: fadeUp 0.7s ease both; animation-delay: 0.05s; }
+.hero-bottom  { animation: fadeUp 0.7s ease both; animation-delay: 0.2s; }
+
+/* Stagger work/portfolio cards */
+.work-card,
+.portfolio-card,
+.service-grid article {
+  animation: fadeUp 0.55s ease both;
+}
+.work-card:nth-child(1), .portfolio-card:nth-child(1), .service-grid article:nth-child(1) { animation-delay: 0.05s; }
+.work-card:nth-child(2), .portfolio-card:nth-child(2), .service-grid article:nth-child(2) { animation-delay: 0.12s; }
+.work-card:nth-child(3), .portfolio-card:nth-child(3), .service-grid article:nth-child(3) { animation-delay: 0.19s; }
+.work-card:nth-child(4), .portfolio-card:nth-child(4), .service-grid article:nth-child(4) { animation-delay: 0.26s; }
+.work-card:nth-child(5), .portfolio-card:nth-child(5), .service-grid article:nth-child(5) { animation-delay: 0.33s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content, .hero-bottom,
+  .work-card, .portfolio-card, .service-grid article {
+    animation: none;
+  }
+}
+
+/* ─── MARQUEE STRIP (skills ticker) ──────────────────────────────── */
+.marquee-strip {
+  overflow: hidden;
+  background: var(--text);
+  border-top: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+  padding: 14px 0;
+}
+.marquee-track {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+}
+.marquee-track span {
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-size: 20px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.marquee-track span.dot { color: var(--accent); }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}

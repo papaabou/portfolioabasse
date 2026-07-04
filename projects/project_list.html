@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Portfolio | {{ site_settings.site_title|default:"Graphiste" }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/project_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="portfolio-hero">
+  <p class="eyebrow">Portfolio</p>
+  <h1>Identites, editions et campagnes visuelles.</h1>
+  <p>Une selection de projets geres depuis l'admin Django : categorie, client, annee, services, images et video.</p>
+</section>
+
+<section class="portfolio-wrap">
+  <div class="filter-bar">
+    <a href="{% url 'project_list' %}" class="{% if not current_category %}active{% endif %}">Tous</a>
+    {% for cat in categories %}
+      <a href="?category={{ cat.slug }}" class="{% if current_category == cat.slug %}active{% endif %}">{{ cat.name }}</a>
+    {% endfor %}
+  </div>
+
+  <div class="portfolio-grid">
+    {% for project in projects %}
+      <a class="portfolio-card" href="{% url 'project_detail' project.slug %}">
+        <div class="portfolio-image">
+          {% if project.cover_image %}
+            <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" loading="lazy">
+          {% else %}
+            <div class="image-placeholder">{{ project.title }}</div>
+          {% endif %}
+        </div>
+        <div class="portfolio-meta">
+          <span>{{ project.category.name|default:"Projet" }}{% if project.year %} / {{ project.year }}{% endif %}</span>
+          <h2>{{ project.title }}</h2>
+          <p>{{ project.excerpt|default:project.description|truncatechars:120 }}</p>
+        </div>
+      </a>
+    {% empty %}
+      <p class="empty-state">Aucun projet publie pour le moment. Ajoutez un projet dans l'admin Django.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,59 @@
+.testimonial-hero {
+    padding-top: var(--gap-md);
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+.testimonial-hero .display-text {
+    font-size: clamp(3rem, 7vw, 5rem);
+    margin-bottom: 20px;
+}
+.testimonial-hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.testimonial-form-wrapper {
+    max-width: 800px;
+    margin: var(--gap-md) auto var(--gap-lg);
+    background-color: var(--bg-card);
+    padding: 50px;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.rating-stars {
+    display: flex;
+    gap: 6px;
+}
+
+.rating-stars input[type="radio"] {
+    display: none;
+}
+
+.form-group .rating-stars label {
+    font-size: 1.6rem;
+    cursor: pointer;
+    position: relative;
+    color: #f5b301;
+}
+
+.rating-stars label::before {
+    content: "★";
+}
+
+/* Highlight stars for selected value and all previous siblings */
+.rating-stars input[type="radio"]:hover + label {
+    color: #f5b301;
+}
+.rating-stars input[type="radio"]:checked + label ~ label {
+    color: var(--text-muted);
+}
+
+/* Hover highlight */
+.rating-stars label:hover,
+.rating-stars label:hover ~ label {
+    color: var(--text-muted);
+}

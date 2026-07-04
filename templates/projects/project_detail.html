@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ project.meta_title|default:project.title }} | Abasse NIANG{% endblock %}
+{% block meta_description %}{{ project.meta_description|default:project.excerpt|truncatewords:25 }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/project_details.css' %}?v={{ static_version }}">
+{% endblock %}
+
+{% block content %}
+<article class="project-page">
+  <header class="project-hero">
+    <div class="project-hero-bg">
+      {% if project.cover_image %}<img src="{{ project.cover_image.url }}" alt="{{ project.title }}">{% endif %}
+    </div>
+    <div class="project-hero-content">
+      <p class="eyebrow">{{ project.category.name|default:"Projet graphique" }}</p>
+      <h1>{{ project.title }}</h1>
+      {% if project.excerpt %}<p>{{ project.excerpt }}</p>{% endif %}
+    </div>
+  </header>
+
+  <section class="project-meta-panel">
+    <div><span>Client</span><strong>{{ project.client.name|default:"Confidentiel" }}</strong></div>
+    <div><span>Année</span><strong>{{ project.year|default:"-" }}</strong></div>
+    <div>
+      <span>Services</span>
+      <strong>
+        {% for service in project.services.all %}
+          {{ service.title }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+          Design graphique
+        {% endfor %}
+      </strong>
+    </div>
+  </section>
+
+  <section class="project-description">
+    <p class="eyebrow">Le projet</p>
+    <div class="rich-text">{{ project.description|default:project.hero_description|linebreaks }}</div>
+    <div class="project-links">
+      {% if project.live_url %}<a class="btn btn-dark" href="{{ project.live_url }}" target="_blank" rel="noopener">Voir le lien</a>{% endif %}
+      {% if project.video_file %}<a class="btn btn-light" href="{{ project.video_file.url }}" target="_blank" rel="noopener">Voir la video</a>{% elif project.video_url %}<a class="btn btn-light" href="{{ project.video_url }}" target="_blank" rel="noopener">Voir la video</a>{% endif %}
+    </div>
+  </section>
+
+  {% if project.video_file %}
+    <section class="video-section">
+      <video controls preload="metadata" poster="{% if project.cover_image %}{{ project.cover_image.url }}{% endif %}">
+        <source src="{{ project.video_file.url }}">
+        Votre navigateur ne peut pas lire cette video.
+      </video>
+    </section>
+  {% elif project.video_url %}
+    <section class="video-section">
+      <a class="video-youtube-link" href="{{ project.video_url }}" target="_blank" rel="noopener"
+         aria-label="Voir « {{ project.title }} » sur YouTube">
+        {% if project.cover_image %}<img src="{{ project.cover_image.url }}" alt="{{ project.title }}" loading="lazy">{% endif %}
+        <span class="play-badge"><i class="bi bi-youtube"></i></span>
+      </a>
+    </section>
+  {% endif %}
+
+  {% if project.images.all %}
+    <section class="gallery-section">
+      {% for item in project.images.all %}
+        <figure>
+          <img src="{{ item.image.url }}" alt="{{ item.caption|default:project.title }}" loading="lazy">
+          {% if item.caption %}<figcaption>{{ item.caption }}</figcaption>{% endif %}
+        </figure>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+  <nav class="project-nav">
+    <a href="{% url 'realisations' %}">Retour aux realisations</a>
+    {% if next_project %}<a href="{% url 'realisation_detail' next_project.slug %}">Projet suivant</a>{% endif %}
+  </nav>
+</article>
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Abasse NIANG | Réalisateur, Vidéaste, Monteur vidéo{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}?v={{ static_version }}">
+{% endblock %}
+
+{% block content %}
+<section class="home-hero">
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline preload="auto"
+           poster="{% if projects.0.cover_image %}{{ projects.0.cover_image.url }}{% endif %}">
+      <source src="{% static 'video/hero-bg.mp4' %}" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-content">
+    <p class="eyebrow">Créteil / CDI dès septembre 2026</p>
+    <h1>Abasse NIANG</h1>
+    <h2>Réalisateur · Vidéaste · Monteur vidéo · Designer</h2>
+    <p>Des visuels qui marquent, du montage qui capte.</p>
+    <div class="hero-actions">
+      <a class="btn btn-dark" href="{% url 'realisations' %}">Voir les r&eacute;alisations</a>
+      <a class="btn btn-light" href="{% url 'contact' %}">Me contacter</a>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <span>{{ project_count }} projets</span>
+    <span>Branding / Vidéo / Miniatures</span>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    {% for i in "12" %}
+    <span>Montage vidéo</span><span class="dot">&bull;</span>
+    <span>Miniatures YouTube</span><span class="dot">&bull;</span>
+    <span>Charte graphique</span><span class="dot">&bull;</span>
+    <span>Web design</span><span class="dot">&bull;</span>
+    <span>Photo e-commerce</span><span class="dot">&bull;</span>
+    <span>Création visuelle</span><span class="dot">&bull;</span>
+    {% endfor %}
+  </div>
+</div>
+
+{% if showreels %}
+<section class="home-section showreel-section">
+  <div class="section-heading">
+    <p class="eyebrow">Showreels</p>
+    <h2>Deux minutes pour voir le savoir-faire en action.</h2>
+  </div>
+  <div class="row g-4">
+    {% for reel in showreels %}
+    <div class="col-md-6 reveal">
+      <div class="card-flat p-0 overflow-hidden h-100">
+        {% if reel.video_file %}
+        <video controls preload="metadata" poster="{% if reel.cover_image %}{{ reel.cover_image.url }}{% endif %}" style="width:100%; display:block; aspect-ratio:16/9; background:#000;">
+          <source src="{{ reel.video_file.url }}">
+        </video>
+        {% endif %}
+        <div class="p-3">
+          <h3 class="h5 mb-1" style="color:var(--text);">{{ reel.title }}</h3>
+          <p class="text-body-secondary mb-0 small">{{ reel.excerpt }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if projects %}
+<section class="home-section selected-work">
+  <div class="section-heading">
+    <p class="eyebrow">Projets sélectionnés</p>
+    <h2>Une galerie visuelle pensée comme un portfolio créatif.</h2>
+  </div>
+  <div class="work-grid">
+    {% for project in projects %}
+      <a class="work-card" href="{% url 'realisation_detail' project.slug %}">
+        <div class="work-media">
+          {% if project.cover_image %}
+            <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" loading="lazy">
+          {% else %}
+            <div class="image-placeholder">{{ project.title }}</div>
+          {% endif %}
+        </div>
+        <div class="work-info">
+          <span>{{ project.category.name|default:"Projet" }}</span>
+          <h3>{{ project.title }}</h3>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="home-section services-section">
+  <div class="section-heading">
+    <p class="eyebrow">Services</p>
+    <h2>Des formats visuels pour marques, créateurs et entreprises.</h2>
+  </div>
+  <div class="service-grid">
+    {% for service in services %}
+      <article>
+        <span>{{ forloop.counter|stringformat:"02d" }}</span>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+      </article>
+    {% empty %}
+      <article><span>01</span><h3>Branding</h3><p>Identité visuelle, logo, direction artistique et charte graphique.</p></article>
+      <article><span>02</span><h3>Montage vidéo</h3><p>Interviews, YouTube, contenus courts, rythme et habillage.</p></article>
+      <article><span>03</span><h3>Miniatures YouTube</h3><p>Images lisibles, contrastées et conçues pour capter l’attention.</p></article>
+      <article><span>04</span><h3>Photos e-commerce</h3><p>Présentation produit, retouche et visuels de vente propres.</p></article>
+      <article><span>05</span><h3>Supports réseaux sociaux</h3><p>Posts, bannières, annonces, contenus digitaux et formats campagne.</p></article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="home-section about-slice">
+  <div>
+    <p class="eyebrow">À propos</p>
+    <h2>Graphiste, créateur visuel et monteur vidéo basé à Créteil.</h2>
+  </div>
+  <p>Des visuels forts, lisibles, sans surcharge.</p>
+</section>
+
+<section class="contact-strip">
+  <p class="eyebrow">Contact</p>
+  <h2>Un projet à lancer ?</h2>
+  <div class="contact-links">
+    {% if profile.email %}<a href="mailto:{{ profile.email }}">Email</a>{% else %}<a href="{% url 'contact' %}">Email</a>{% endif %}
+    {% for link in social_links %}
+      <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.platform_name }}</a>
+    {% endfor %}
+    {% if profile.whatsapp %}<a href="https://wa.me/{{ profile.whatsapp }}?text={{ "Bonjour Abasse, je vous contacte depuis votre portfolio."|urlencode }}" target="_blank" rel="noopener">WhatsApp</a>{% endif %}
+  </div>
+</section>
+{% endblock %}

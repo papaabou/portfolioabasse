@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}À propos | Abasse NIANG{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/about_me.css' %}?v={{ static_version }}">
+{% endblock %}
+
+{% block content %}
+<section class="about-page">
+  <div class="about-media">
+    {% if profile.profile_image %}
+      <img src="{{ profile.profile_image.url }}" alt="{{ profile.full_name }}">
+    {% else %}
+      <div class="image-placeholder">Portrait</div>
+    {% endif %}
+  </div>
+  <div class="about-copy">
+    <p class="eyebrow">À propos / Créteil, France</p>
+    <h1>{{ profile.full_name|default:"Abasse NIANG" }}</h1>
+    {% if about_settings.hero_title %}<p class="about-role">{{ about_settings.hero_title }}</p>{% endif %}
+    <div class="about-text">
+      <p>{{ profile.short_bio|default:"Graphiste, créateur visuel et monteur vidéo, disponible pour des missions freelance et full-time." }}</p>
+      {% if profile.philosophy %}
+        <p>{{ profile.philosophy }}</p>
+      {% else %}
+        <p>Je crée des visuels, vidéos, miniatures, chartes graphiques et contenus digitaux pour marques, créateurs et entreprises.</p>
+      {% endif %}
+      {% if about_settings.hero_subtitle %}<p class="about-availability"><i class="bi bi-briefcase me-2"></i>{{ about_settings.hero_subtitle }}</p>{% endif %}
+    </div>
+
+    {% if profile.skills.all %}
+      <div class="skill-cloud">
+        {% for skill in profile.skills.all %}
+          <span>{{ skill.name }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <a class="btn btn-dark" href="{% url 'contact' %}">Discuter d'un projet</a>
+    <a class="btn btn-light" href="{% static 'files/cv-abasse-niang.pdf' %}" download><i class="bi bi-download me-2"></i>Télécharger mon CV</a>
+    {% if profile.email %}<a class="about-link" href="mailto:{{ profile.email }}">{{ profile.email }}</a>{% endif %}
+    {% if profile.phone %}<a class="about-link" href="tel:{{ profile.phone|cut:" " }}">{{ profile.phone }}</a>{% endif %}
+  </div>
+</section>
+
+{% if profile.values.all %}
+<section class="container py-5 reveal">
+  <div class="values-row">
+    {% for value in profile.values.all %}
+      <span class="value-pill">{{ value.title }}</span>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if profile.journeys.all %}
+<section class="container pb-5 reveal">
+  <h2 class="h3 mb-4">Parcours professionnel</h2>
+  <div class="timeline">
+    {% for step in profile.journeys.all %}
+    <div class="timeline-item">
+      <div class="timeline-year">{{ step.start_year }}{% if step.end_year %} – {{ step.end_year }}{% endif %}</div>
+      <div class="timeline-body">
+        <h3 class="h6 mb-1">{{ step.title }}</h3>
+        <p class="text-body-secondary mb-0">{{ step.description }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}

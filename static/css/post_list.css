@@ -1,0 +1,32 @@
+/* --- PAGE SPECIFIC STYLES --- */
+.article-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    transition: padding-left 0.3s, background-color 0.3s;
+}
+.article-list-item:hover {
+    padding-left: 20px;
+    background-color: var(--bg-card);
+}
+
+.article-list-item h2 { 
+    font-size: 2rem; 
+    font-family: var(--font-head);
+    max-width: 70%;
+}
+.article-meta {
+    text-align: right;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+.article-meta p { margin-bottom: 5px; }
+
+/* --- MOBILE --- */
+@media (max-width: 1024px) {
+    .article-list-item { flex-direction: column; align-items: flex-start; padding: 20px 0; }
+    .article-list-item h2 { font-size: 1.5rem; max-width: 100%; margin-bottom: 10px; }
+    .article-meta { text-align: left; }
+}

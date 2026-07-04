@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Témoignages | Abasse NIANG{% endblock %}
+{% block meta_description %}Avis et témoignages de clients ayant travaillé avec Abasse NIANG, graphiste et créateur visuel à Créteil.{% endblock %}
+
+{% block content %}
+<header class="container py-5 text-center reveal">
+  <p class="eyebrow d-block">Témoignages</p>
+  <h1 class="display-5" style="text-transform:uppercase;">Ce qu'en disent les clients</h1>
+  <a href="{% url 'testimonial_submit' %}" class="btn btn-light mt-3">Laisser un témoignage</a>
+</header>
+
+<section class="container pb-5">
+  {% if testimonials %}
+  <div class="row g-4">
+    {% for testimonial in testimonials %}
+    <div class="col-md-6 col-lg-4 reveal">
+      <div class="card-flat h-100 d-flex flex-column">
+        <div class="stars mb-2">
+          {% for _ in "12345" %}{% if forloop.counter <= testimonial.rating %}<i class="bi bi-star-fill"></i>{% else %}<i class="bi bi-star"></i>{% endif %}{% endfor %}
+        </div>
+        <p class="flex-grow-1">&laquo; {{ testimonial.body }} &raquo;</p>
+        <div class="mt-3">
+          <strong>{{ testimonial.name }}</strong>
+          {% if testimonial.role or testimonial.company %}
+          <div class="text-body-secondary small">{{ testimonial.role }}{% if testimonial.role and testimonial.company %}, {% endif %}{{ testimonial.company }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if testimonials.has_other_pages %}
+  <div class="d-flex justify-content-center gap-3 mt-5">
+    {% if testimonials.has_previous %}
+      <a class="btn btn-light" href="?page={{ testimonials.previous_page_number }}">&larr; Précédent</a>
+    {% endif %}
+    {% if testimonials.has_next %}
+      <a class="btn btn-light" href="?page={{ testimonials.next_page_number }}">Suivant &rarr;</a>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% else %}
+  <div class="text-center reveal">
+    <p class="text-body-secondary fs-5 mx-auto" style="max-width:520px;">
+      Les premiers témoignages sont en cours de collecte. Vous avez travaillé avec
+      Abasse&nbsp;? Partagez votre expérience !
+    </p>
+    <a href="{% url 'testimonial_submit' %}" class="btn btn-dark mt-3">Laisser le premier témoignage</a>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
