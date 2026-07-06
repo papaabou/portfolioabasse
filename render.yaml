@@ -1,0 +1,50 @@
+databases:
+  - name: portfolioabasse-db
+    plan: free
+    databaseName: portfolioabasse
+    user: portfolioabasse
+
+services:
+  - type: web
+    name: portfolioabasse
+    runtime: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn portfolio_site.wsgi:app"
+    envVars:
+      - key: DJANGO_ENV
+        value: production
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: PYTHON_VERSION
+        value: "3.12.10"
+      - key: DB_NAME
+        fromDatabase:
+          name: portfolioabasse-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: portfolioabasse-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: portfolioabasse-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: portfolioabasse-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: portfolioabasse-db
+          property: port
+      - key: EMAIL_HOST
+        value: smtp.gmail.com
+      - key: EMAIL_PORT
+        value: "587"
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
