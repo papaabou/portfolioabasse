@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.core.paginator import Paginator
+from django.templatetags.static import static
 
 from about_me.models import Profile
 from contact.services import handle_contact_submission
@@ -56,4 +57,6 @@ def service_list(request):
             service.sample_image_url = service.sample_project.cover_image.url
         elif service.slug == "photo" and profile and profile.profile_image:
             service.sample_image_url = profile.profile_image.url
+        elif service.slug == "web-design":
+            service.sample_image_url = static("img/web-design-illustration.svg")
     return render(request, "services/services_list.html", {"services": services})

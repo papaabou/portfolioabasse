@@ -1,0 +1,41 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="800" height="500" fill="#EAE3D3"/>
+
+  <!-- browser window -->
+  <g>
+    <rect x="90" y="60" width="620" height="400" rx="10" fill="#FFFFFF" stroke="#16130E" stroke-width="4"/>
+
+    <!-- browser chrome bar -->
+    <rect x="90" y="60" width="620" height="48" rx="10" fill="#16130E"/>
+    <rect x="90" y="90" width="620" height="18" fill="#16130E"/>
+    <circle cx="118" cy="84" r="7" fill="#E8391F"/>
+    <circle cx="144" cy="84" r="7" fill="#E8B400"/>
+    <circle cx="170" cy="84" r="7" fill="#F3EEE3"/>
+    <rect x="220" y="74" width="360" height="20" rx="10" fill="#514C42"/>
+
+    <!-- nav row -->
+    <rect x="130" y="140" width="90" height="14" rx="7" fill="#16130E"/>
+    <rect x="240" y="140" width="70" height="14" rx="7" fill="#8C8575"/>
+    <rect x="330" y="140" width="70" height="14" rx="7" fill="#8C8575"/>
+    <rect x="420" y="140" width="70" height="14" rx="7" fill="#8C8575"/>
+    <rect x="600" y="132" width="100" height="30" rx="6" fill="#E8391F"/>
+
+    <!-- hero heading -->
+    <rect x="130" y="200" width="340" height="28" rx="4" fill="#16130E"/>
+    <rect x="130" y="240" width="260" height="28" rx="4" fill="#16130E"/>
+    <rect x="130" y="290" width="300" height="14" rx="7" fill="#8C8575"/>
+    <rect x="130" y="312" width="220" height="14" rx="7" fill="#8C8575"/>
+    <rect x="130" y="345" width="140" height="36" rx="6" fill="#E8391F"/>
+
+    <!-- content cards row -->
+    <rect x="130" y="405" width="150" height="34" rx="6" fill="#EAE3D3" stroke="#16130E" stroke-width="3"/>
+    <rect x="300" y="405" width="150" height="34" rx="6" fill="#EAE3D3" stroke="#16130E" stroke-width="3"/>
+    <rect x="470" y="405" width="150" height="34" rx="6" fill="#EAE3D3" stroke="#16130E" stroke-width="3"/>
+
+    <!-- decorative visual block -->
+    <rect x="520" y="200" width="160" height="180" rx="8" fill="#F3EEE3" stroke="#16130E" stroke-width="3"/>
+    <circle cx="600" cy="270" r="34" fill="#E8391F"/>
+    <rect x="545" y="325" width="110" height="12" rx="6" fill="#8C8575"/>
+    <rect x="545" y="345" width="80" height="12" rx="6" fill="#8C8575"/>
+  </g>
+</svg>
