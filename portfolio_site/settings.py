@@ -108,50 +108,69 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '[{levelname}] {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
+if IS_PRODUCTION:
+    # Render's filesystem is ephemeral and the "logs/" dir isn't guaranteed to
+    # exist, so log to the console only — Render captures stdout/stderr itself.
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'simple': {'format': '[{levelname}] {message}', 'style': '{'},
         },
-        'simple': {
-            'format': '[{levelname}] {message}',
-            'style': '{',
+        'handlers': {
+            'console': {'class': 'logging.StreamHandler', 'formatter': 'simple'},
         },
-    },
-    'handlers': {
-        'file': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'logs/django.log',
-            'formatter': 'verbose',
+        'loggers': {
+            'django': {'handlers': ['console'], 'level': 'INFO', 'propagate': True},
+            'django.request': {'handlers': ['console'], 'level': 'ERROR', 'propagate': False},
         },
-        'error_file': {
-            'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'logs/django_errors.log',
-            'formatter': 'verbose',
+    }
+else:
+    os.makedirs(BASE_DIR / 'logs', exist_ok=True)
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'verbose': {
+                'format': '[{levelname}] {asctime} {module} {process:d} {thread:d} {message}',
+                'style': '{',
+            },
+            'simple': {
+                'format': '[{levelname}] {message}',
+                'style': '{',
+            },
         },
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple',
+        'handlers': {
+            'file': {
+                'level': 'INFO',
+                'class': 'logging.FileHandler',
+                'filename': BASE_DIR / 'logs/django.log',
+                'formatter': 'verbose',
+            },
+            'error_file': {
+                'level': 'ERROR',
+                'class': 'logging.FileHandler',
+                'filename': BASE_DIR / 'logs/django_errors.log',
+                'formatter': 'verbose',
+            },
+            'console': {
+                'class': 'logging.StreamHandler',
+                'formatter': 'simple',
+            },
         },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file', 'error_file', 'console'],
-            'level': 'INFO',
-            'propagate': True,
+        'loggers': {
+            'django': {
+                'handlers': ['file', 'error_file', 'console'],
+                'level': 'INFO',
+                'propagate': True,
+            },
+            'django.request': {
+                'handlers': ['error_file'],
+                'level': 'ERROR',
+                'propagate': False,
+            },
         },
-        'django.request': {
-            'handlers': ['error_file'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
-    },
-}
+    }
 
 LANGUAGE_CODE = "fr-fr"
 
