@@ -22,6 +22,8 @@ class Command(BaseCommand):
             "l'aise à toutes les étapes de la production audiovisuelle : tournage, montage, "
             "motion design et habillage."
         )
+        if not profile.profile_image:
+            profile.profile_image.name = "profile/abasse-portrait.jpg"
         profile.save()
 
         skills = [
