@@ -22,8 +22,7 @@
   </header>
 
   <section class="project-meta-panel">
-    <div><span>Client</span><strong>{{ project.client.name|default:"Confidentiel" }}</strong></div>
-    <div><span>Année</span><strong>{{ project.year|default:"-" }}</strong></div>
+    {% if project.client %}<div><span>Client</span><strong>{{ project.client.name }}</strong></div>{% endif %}
     <div>
       <span>Services</span>
       <strong>

@@ -10,13 +10,15 @@ if ENVIRONMENT == "development":
 # Base dir
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-local-dev-key-123456789"
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-local-dev-key-123456789")
 
 IS_PRODUCTION = ENVIRONMENT == "production"
 
-DEBUG = True
+DEBUG = not IS_PRODUCTION
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = (
+    os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+)
 
 INTERNAL_IPS = ["127.0.0.1",]
 

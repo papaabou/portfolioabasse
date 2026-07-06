@@ -160,6 +160,7 @@
 
 .work-media img,
 .work-media .image-placeholder {
+  object-position: top;
   transition: transform 440ms ease, filter 440ms ease;
 }
 

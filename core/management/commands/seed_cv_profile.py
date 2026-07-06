@@ -34,6 +34,12 @@ class Command(BaseCommand):
             ("Mise en page (InDesign)", 75, 7),
             ("Prototypage web (Figma)", 75, 8),
             ("Web (HTML, CSS, WordPress)", 65, 9),
+            ("IA générative vidéo (Kling AI)", 80, 10),
+            ("IA générative vidéo (Google Flow / Veo 3)", 80, 11),
+            ("IA générative vidéo (Runway)", 80, 12),
+            ("IA générative image (Qwen AI)", 75, 13),
+            ("IA générative vidéo (WAN AI)", 75, 14),
+            ("IA assistant (ChatGPT)", 80, 15),
         ]
         skill_objs = []
         for name, level, order in skills:
@@ -120,13 +126,13 @@ class Command(BaseCommand):
             defaults={
                 "hero_title": "Réalisateur · Vidéaste · Monteur vidéo",
                 "hero_subtitle": (
-                    "À la recherche d'un contrat à durée indéterminée (CDI) à partir de "
-                    "septembre 2026, au sein d'une équipe créative."
+                    "Disponible pour des missions freelance, des collaborations et de "
+                    "nouvelles opportunités professionnelles."
                 ),
                 "meta_title": "Abasse NIANG — Réalisateur, Vidéaste, Monteur vidéo",
                 "meta_description": (
                     "Abasse NIANG, réalisateur, vidéaste et monteur vidéo basé à Créteil. "
-                    "À la recherche d'un CDI à partir de septembre 2026."
+                    "Disponible pour des missions freelance et de nouvelles opportunités."
                 ),
             },
         )
