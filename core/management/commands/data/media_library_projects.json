@@ -1,0 +1,670 @@
+[
+  {
+    "slug": "banniere-tv",
+    "title": "Bannière TV",
+    "category": "Design graphique",
+    "client": null,
+    "services": [
+      "creation-visuelle"
+    ],
+    "excerpt": "Création d'une bannière TV claire, impactante et prête pour diffusion.",
+    "description": "Création d'une bannière TV claire, impactante et prête pour diffusion.",
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "thumbnail": "projects/thumbnails/banniere-tv.png",
+    "image": null,
+    "video_file": null,
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "miniatures-mini-formation-reboot",
+    "title": "Miniatures Mini Formation REBOOT",
+    "category": "Miniatures",
+    "client": null,
+    "services": [
+      "miniatures-youtube"
+    ],
+    "excerpt": "Série de miniatures pour formation, pensées pour attirer l'attention rapidement.",
+    "description": "Série de miniatures pour formation, pensées pour attirer l'attention rapidement.",
+    "year": 2026,
+    "featured": true,
+    "published": false,
+    "thumbnail": null,
+    "image": null,
+    "video_file": null,
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "miniaturs",
+    "title": "Miniaturs",
+    "category": "Miniatures",
+    "client": null,
+    "services": [
+      "miniatures-youtube"
+    ],
+    "excerpt": "Création de miniatures digitales au style direct, lisible et contrasté.",
+    "description": "Création de miniatures digitales au style direct, lisible et contrasté.",
+    "year": 2026,
+    "featured": false,
+    "published": false,
+    "thumbnail": null,
+    "image": null,
+    "video_file": null,
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "montage-video-chaine-youtube-baadoola-tv",
+    "title": "Montage vidéo Chaîne YouTube BAADOOLA TV",
+    "category": "Montage vidéo",
+    "client": null,
+    "services": [
+      "montage-video"
+    ],
+    "excerpt": "Montage vidéo pour chaîne YouTube avec habillage et rythme éditorial.",
+    "description": "Montage vidéo pour chaîne YouTube avec habillage et rythme éditorial.",
+    "year": 2026,
+    "featured": true,
+    "published": false,
+    "thumbnail": null,
+    "image": null,
+    "video_file": null,
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "photos",
+    "title": "Photos",
+    "category": "Photos",
+    "client": null,
+    "services": [
+      "photos"
+    ],
+    "excerpt": "Séance photo produit pour la boutique e-commerce de mode Lachica (lachica.fr) : mises en scène en extérieur et en intérieur pour présenter les vêtements et accessoires de la collection dans un style lifestyle.",
+    "description": "Séance photo produit pour la boutique e-commerce de mode Lachica (lachica.fr) : mises en scène en extérieur et en intérieur pour présenter les vêtements et accessoires de la collection dans un style lifestyle.",
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "thumbnail": "projects/thumbnails/photo-ecommerce-lachica-cover.jpg",
+    "image": null,
+    "video_file": null,
+    "video_url": "",
+    "gallery": [
+      {
+        "image": "projects/images/photo-ecommerce-lachica-01.jpg",
+        "caption": "",
+        "order": 1
+      },
+      {
+        "image": "projects/images/photo-ecommerce-lachica-02.jpg",
+        "caption": "",
+        "order": 2
+      },
+      {
+        "image": "projects/images/photo-ecommerce-lachica-03.jpg",
+        "caption": "",
+        "order": 3
+      },
+      {
+        "image": "projects/images/photo-ecommerce-lachica-04.jpg",
+        "caption": "",
+        "order": 4
+      },
+      {
+        "image": "projects/images/photo-ecommerce-lachica-05.jpg",
+        "caption": "",
+        "order": 5
+      },
+      {
+        "image": "projects/images/photo-ecommerce-lachica-06.jpg",
+        "caption": "",
+        "order": 6
+      },
+      {
+        "image": "projects/images/photo-ecommerce-lachica-07.jpg",
+        "caption": "",
+        "order": 7
+      }
+    ]
+  },
+  {
+    "slug": "rafael-moya-notre-commissaire-de-justice",
+    "title": "Rafael MOYA, notre commissaire de justice",
+    "category": "Montage vidéo",
+    "client": "Fast & Genius",
+    "services": [
+      "montage-video",
+      "miniatures-youtube"
+    ],
+    "excerpt": "Montage d'une interview pour la chaîne Fast & Genius, mettant en lumière le métier de commissaire de justice à travers le témoignage de Rafael Moya.",
+    "description": "Montage d'une interview pour la chaîne Fast & Genius, mettant en lumière le métier de commissaire de justice à travers le témoignage de Rafael Moya.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/rafael-moya-notre-commissaire-de-justice.jpg",
+    "image": null,
+    "video_file": null,
+    "video_url": "https://youtu.be/Kne4qArnTIU",
+    "gallery": []
+  },
+  {
+    "slug": "kamel-kajout-etes-vous-pret-a-hacker-votre-memoire",
+    "title": "KAMEL KAJOUT - Êtes-vous prêt à hacker votre mémoire ?",
+    "category": "Montage vidéo",
+    "client": "Fast & Genius",
+    "services": [
+      "montage-video"
+    ],
+    "excerpt": "Montage d'une interview pour Fast & Genius sur les techniques de mémorisation, avec Kamel Kajout.",
+    "description": "Montage d'une interview pour Fast & Genius sur les techniques de mémorisation, avec Kamel Kajout.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/kamel-kajout-etes-vous-pret-a-hacker-votre-memoire.jpg",
+    "image": null,
+    "video_file": null,
+    "video_url": "https://youtu.be/SuO7b5ePPgE",
+    "gallery": []
+  },
+  {
+    "slug": "linfluence-cachee-du-cerveau-humain-guillaume-attias",
+    "title": "L'influence cachée du cerveau humain - Guillaume Attias",
+    "category": "Montage vidéo",
+    "client": "Fast & Genius",
+    "services": [
+      "montage-video"
+    ],
+    "excerpt": "Montage vidéo pour le Championnat de France des Sports du Cerveau : interview de Guillaume Attias sur l'influence du cerveau humain, réalisée pour Fast & Genius.",
+    "description": "Montage vidéo pour le Championnat de France des Sports du Cerveau : interview de Guillaume Attias sur l'influence du cerveau humain, réalisée pour Fast & Genius.",
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "thumbnail": "projects/thumbnails/linfluence-cachee-du-cerveau-humain-guillaume-attias.jpg",
+    "image": null,
+    "video_file": null,
+    "video_url": "https://youtu.be/3PsKFBrFtT8",
+    "gallery": []
+  },
+  {
+    "slug": "comment-nourrir-votre-cerveau-mohamed-chayani",
+    "title": "Comment nourrir votre cerveau ? - Mohamed Chayani",
+    "category": "Montage vidéo",
+    "client": "Fast & Genius",
+    "services": [
+      "montage-video"
+    ],
+    "excerpt": "Interview montée pour le Championnat de France des Sports du Cerveau, avec Mohamed Chayani sur l'alimentation du cerveau.",
+    "description": "Interview montée pour le Championnat de France des Sports du Cerveau, avec Mohamed Chayani sur l'alimentation du cerveau.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/comment-nourrir-votre-cerveau-mohamed-chayani.jpg",
+    "image": null,
+    "video_file": null,
+    "video_url": "https://youtu.be/sQf4_nxM9Ks",
+    "gallery": []
+  },
+  {
+    "slug": "la-maladie-est-une-chance-paul-fontaine",
+    "title": "La maladie est une chance - Paul Fontaine",
+    "category": "Montage vidéo",
+    "client": "Fast & Genius",
+    "services": [
+      "montage-video"
+    ],
+    "excerpt": "Montage d'un témoignage fort pour le Championnat de France des Sports du Cerveau, avec Paul Fontaine, pour la chaîne Fast & Genius.",
+    "description": "Montage d'un témoignage fort pour le Championnat de France des Sports du Cerveau, avec Paul Fontaine, pour la chaîne Fast & Genius.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/la-maladie-est-une-chance-paul-fontaine.jpg",
+    "image": null,
+    "video_file": null,
+    "video_url": "https://youtu.be/DMCglIXqgc4",
+    "gallery": []
+  },
+  {
+    "slug": "jottay-bi",
+    "title": "Jottay Bi",
+    "category": "Montage vidéo",
+    "client": null,
+    "services": [
+      "montage-video"
+    ],
+    "excerpt": "Montage vidéo réalisé pour la chaîne YouTube personnelle Bassit Prod, avec habillage et rythme propres à l'univers de la chaîne.",
+    "description": "Montage vidéo réalisé pour la chaîne YouTube personnelle Bassit Prod, avec habillage et rythme propres à l'univers de la chaîne.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/jottay-bi.jpg",
+    "image": null,
+    "video_file": null,
+    "video_url": "https://youtu.be/T5D-xMzvoKA",
+    "gallery": []
+  },
+  {
+    "slug": "identite-visuelle-d5-media-radio-tv-music-news",
+    "title": "Identité visuelle D5 Media — Radio, TV, Music, News",
+    "category": "Charte graphique",
+    "client": "D5 Media",
+    "services": [
+      "charte-graphique",
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Bannières harmonisées et logo animé pour les quatre antennes du groupe D5.",
+    "description": "D5 Media regroupe quatre antennes distinctes — Radio, TV, Music et News — qui avaient besoin d'une signature visuelle commune sans perdre l'identité propre à chacune. Le travail a porté sur une déclinaison de bannières Facebook au même gabarit graphique (typographie, palette, mise en page) pour que les quatre pages soient immédiatement reconnaissables comme faisant partie d'un même groupe, ainsi que sur un logo animé pour l'antenne radio, pensé pour ouvrir les contenus vidéo et les directs.",
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "thumbnail": "projects/thumbnails/identite-visuelle-d5-media-radio-tv-music-news.png",
+    "image": null,
+    "video_file": "projects/videos/identite-visuelle-d5-media-radio-tv-music-news.mp4",
+    "video_url": "",
+    "gallery": [
+      {
+        "image": "projects/images/identite-visuelle-d5-media-radio-tv-music-news-1.png",
+        "caption": "Bannière Facebook D5 TV",
+        "order": 1
+      },
+      {
+        "image": "projects/images/identite-visuelle-d5-media-radio-tv-music-news-2.png",
+        "caption": "Bannière Facebook D5 Music",
+        "order": 2
+      },
+      {
+        "image": "projects/images/identite-visuelle-d5-media-radio-tv-music-news-3.png",
+        "caption": "Bannière Facebook D5 News",
+        "order": 3
+      },
+      {
+        "image": "projects/images/identite-visuelle-d5-media-radio-tv-music-news-4.png",
+        "caption": "Bannière Facebook D5 Radio",
+        "order": 4
+      }
+    ]
+  },
+  {
+    "slug": "banniere-facebook-mycomedy",
+    "title": "Bannière Facebook MYCOMEDY",
+    "category": "Design graphique",
+    "client": null,
+    "services": [
+      "creation-visuelle"
+    ],
+    "excerpt": "Bannière Facebook pour la page humour MYCOMEDY.",
+    "description": "Création d'une bannière Facebook pour la page MYCOMEDY, conçue pour capter l'attention dans un fil d'actualité chargé : composition simple, contraste fort et ton visuel qui reflète l'univers humoristique de la page.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/banniere-facebook-mycomedy.png",
+    "image": null,
+    "video_file": null,
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "top-10-mbalax-emission-musicale",
+    "title": "TOP 10 MBALAX — Émission musicale",
+    "category": "Motion Design & Habillage TV",
+    "client": "Top Clips",
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Habillage d'émission — TOP 10 MBALAX.",
+    "description": "Top Clips est un format de classement musical décliné par genre et par pays ; chaque édition garde la même structure de générique mais adapte le rythme et l'image au public visé. Cette version : affiche et générique d'intro pour le classement mbalax, pensés pour un public attaché aux codes visuels de cette scène musicale. Le montage est calé sur le tempo de l'émission pour identifier immédiatement le classement dès l'ouverture.",
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "thumbnail": "projects/thumbnails/top-10-mbalax-emission-musicale.png",
+    "image": null,
+    "video_file": "projects/videos/top-10-mbalax-emission-musicale.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "top-10-naija-emission-musicale",
+    "title": "TOP 10 NAIJA — Émission musicale",
+    "category": "Motion Design & Habillage TV",
+    "client": "Top Clips",
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Habillage d'émission — TOP 10 NAIJA.",
+    "description": "Top Clips est un format de classement musical décliné par genre et par pays ; chaque édition garde la même structure de générique mais adapte le rythme et l'image au public visé. Cette version : déclinaison de l'habillage Top Clips pour le classement naija, avec une affiche et un générique adaptés à l'identité de cette scène musicale. Le montage est calé sur le tempo de l'émission pour identifier immédiatement le classement dès l'ouverture.",
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "thumbnail": "projects/thumbnails/top-10-naija-emission-musicale.png",
+    "image": null,
+    "video_file": "projects/videos/top-10-naija-emission-musicale.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "top-10-clips-rap-france-habillage-emission",
+    "title": "TOP 10 Clips Rap France — Habillage émission",
+    "category": "Motion Design & Habillage TV",
+    "client": "Top Clips",
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Habillage d'émission — TOP 10 Clips Rap France.",
+    "description": "Top Clips est un format de classement musical décliné par genre et par pays ; chaque édition garde la même structure de générique mais adapte le rythme et l'image au public visé. Cette version : version rap français de l'habillage Top Clips, montée pour donner le ton dès les premières secondes du classement. Le montage est calé sur le tempo de l'émission pour identifier immédiatement le classement dès l'ouverture.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/top-10-clips-rap-france-habillage-emission.jpg",
+    "image": null,
+    "video_file": "projects/videos/top-10-clips-rap-france-habillage-emission.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "top-10-clips-rap-us-habillage-emission",
+    "title": "TOP 10 Clips Rap US — Habillage émission",
+    "category": "Motion Design & Habillage TV",
+    "client": "Top Clips",
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Habillage d'émission — TOP 10 Clips Rap US.",
+    "description": "Top Clips est un format de classement musical décliné par genre et par pays ; chaque édition garde la même structure de générique mais adapte le rythme et l'image au public visé. Cette version : déclinaison rap US de l'habillage Top Clips, avec un montage calé sur les codes visuels de cette scène. Le montage est calé sur le tempo de l'émission pour identifier immédiatement le classement dès l'ouverture.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/top-10-clips-rap-us-habillage-emission.jpg",
+    "image": null,
+    "video_file": "projects/videos/top-10-clips-rap-us-habillage-emission.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "top-10-clips-pop-rnb-france-habillage-emission",
+    "title": "TOP 10 Clips Pop & RnB France — Habillage émission",
+    "category": "Motion Design & Habillage TV",
+    "client": "Top Clips",
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Habillage d'émission — TOP 10 Clips Pop & RnB France.",
+    "description": "Top Clips est un format de classement musical décliné par genre et par pays ; chaque édition garde la même structure de générique mais adapte le rythme et l'image au public visé. Cette version : version pop & RnB français de l'habillage Top Clips, au ton plus feutré que les déclinaisons rap. Le montage est calé sur le tempo de l'émission pour identifier immédiatement le classement dès l'ouverture.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/top-10-clips-pop-rnb-france-habillage-emission.jpg",
+    "image": null,
+    "video_file": "projects/videos/top-10-clips-pop-rnb-france-habillage-emission.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "top-10-clips-pop-rnb-us-habillage-emission",
+    "title": "TOP 10 Clips Pop & RnB US — Habillage émission",
+    "category": "Motion Design & Habillage TV",
+    "client": "Top Clips",
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Habillage d'émission — TOP 10 Clips Pop & RnB US.",
+    "description": "Top Clips est un format de classement musical décliné par genre et par pays ; chaque édition garde la même structure de générique mais adapte le rythme et l'image au public visé. Cette version : déclinaison pop & RnB US de l'habillage Top Clips, avec la même structure de générique adaptée à l'ambiance du genre. Le montage est calé sur le tempo de l'émission pour identifier immédiatement le classement dès l'ouverture.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/top-10-clips-pop-rnb-us-habillage-emission.jpg",
+    "image": null,
+    "video_file": "projects/videos/top-10-clips-pop-rnb-us-habillage-emission.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "sous-titrage-anime-top-clips",
+    "title": "Sous-titrage animé — Top Clips",
+    "category": "Motion Design & Habillage TV",
+    "client": "Top Clips",
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Template de sous-titrage animé pour la série Top Clips.",
+    "description": "Habillage de sous-titrage animé conçu pour être réutilisé sur l'ensemble des éditions Top Clips (Mbalax, Naija, Rap, Pop & RnB), afin de garder une cohérence visuelle d'un épisode à l'autre quel que soit le genre musical mis en avant.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/sous-titrage-anime-top-clips.jpg",
+    "image": null,
+    "video_file": "projects/videos/sous-titrage-anime-top-clips.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "idf-tv-habillage-de-chaine",
+    "title": "IDF TV — Habillage de chaîne",
+    "category": "Motion Design & Habillage TV",
+    "client": "IDF TV",
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Identité de chaîne animée pour IDF TV.",
+    "description": "Animation d'habillage pour la chaîne IDF TV : une identité visuelle en mouvement destinée à ouvrir les programmes et rappeler la marque de l'antenne sur l'ensemble de ses contenus, dans un format court pensé pour être diffusé en boucle sans lasser.",
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "thumbnail": "projects/thumbnails/idf-tv-habillage-de-chaine.jpg",
+    "image": null,
+    "video_file": "projects/videos/idf-tv-habillage-de-chaine.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "idf-tv-spot-publicitaire",
+    "title": "IDF TV — Spot publicitaire",
+    "category": "Motion Design & Habillage TV",
+    "client": "IDF TV",
+    "services": [
+      "montage-video"
+    ],
+    "excerpt": "Montage d'un spot publicitaire pour IDF TV.",
+    "description": "Montage et habillage d'un spot publicitaire diffusé sur IDF TV : un exercice différent de l'habillage de chaîne, avec un message commercial à faire passer dans un format court, sans perdre en clarté ni en rythme.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/idf-tv-spot-publicitaire.jpg",
+    "image": null,
+    "video_file": "projects/videos/idf-tv-spot-publicitaire.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "val-doise-tv-habillage-de-chaine",
+    "title": "Val-d'Oise TV — Habillage de chaîne",
+    "category": "Motion Design & Habillage TV",
+    "client": "Val-d'Oise TV",
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Identité de chaîne animée pour Val-d'Oise TV.",
+    "description": "Animation d'habillage pour Val-d'Oise TV, réalisée sur le même principe que pour IDF TV : une signature en mouvement courte et reconnaissable, conçue pour ouvrir les programmes de l'antenne locale.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/val-doise-tv-habillage-de-chaine.jpg",
+    "image": null,
+    "video_file": "projects/videos/val-doise-tv-habillage-de-chaine.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "val-doise-tv-spot-publicitaire",
+    "title": "Val-d'Oise TV — Spot publicitaire",
+    "category": "Motion Design & Habillage TV",
+    "client": "Val-d'Oise TV",
+    "services": [
+      "montage-video"
+    ],
+    "excerpt": "Montage d'un spot publicitaire pour Val-d'Oise TV.",
+    "description": "Montage et habillage d'un spot publicitaire diffusé sur Val-d'Oise TV, avec un rythme de coupe pensé pour un format publicitaire court.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/val-doise-tv-spot-publicitaire.jpg",
+    "image": null,
+    "video_file": "projects/videos/val-doise-tv-spot-publicitaire.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "habillage-clips-internationaux",
+    "title": "Habillage Clips Internationaux",
+    "category": "Motion Design & Habillage TV",
+    "client": null,
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Générique d'intro pour une émission de clips internationaux.",
+    "description": "Générique d'introduction animé conçu pour une émission consacrée aux clips internationaux : un habillage neutre en termes de scène musicale, capable d'introduire des sélections très variées sans imposer un univers graphique trop marqué.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/habillage-clips-internationaux.jpg",
+    "image": null,
+    "video_file": "projects/videos/habillage-clips-internationaux.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "habillage-podcast",
+    "title": "Habillage Podcast",
+    "category": "Motion Design & Habillage TV",
+    "client": null,
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Introduction animée pour un format podcast.",
+    "description": "Introduction animée conçue pour ouvrir un format podcast : un habillage plus sobre que pour la télévision, pensé pour un public qui écoute autant qu'il regarde.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/habillage-podcast.jpg",
+    "image": null,
+    "video_file": "projects/videos/habillage-podcast.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "motion-design-habillage-anime",
+    "title": "Motion Design — Habillage animé",
+    "category": "Motion Design & Habillage TV",
+    "client": null,
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Composition de motion design libre, hors commande client.",
+    "description": "Composition animée réalisée en dehors de toute commande client, pour explorer librement des mouvements, des transitions et des rythmes d'animation. Ce type de pièce sert de terrain d'essai avant de réutiliser certaines idées sur des projets clients.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/motion-design-habillage-anime.jpg",
+    "image": null,
+    "video_file": "projects/videos/motion-design-habillage-anime.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "templates-de-titrage-anime",
+    "title": "Templates de titrage animé",
+    "category": "Motion Design & Habillage TV",
+    "client": null,
+    "services": [
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Templates de titrage et sous-titrage réutilisables.",
+    "description": "Ensemble de templates de titrage et de sous-titrage animés, conçus pour être réutilisés d'un projet à l'autre plutôt que refaits à chaque fois : une base qui accélère le montage tout en gardant un rendu cohérent.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/templates-de-titrage-anime.jpg",
+    "image": null,
+    "video_file": "projects/videos/templates-de-titrage-anime.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "showreel-montage-de-clips-musicaux",
+    "title": "Showreel — Montage de clips musicaux",
+    "category": "Montage vidéo",
+    "client": null,
+    "services": [
+      "montage-video"
+    ],
+    "excerpt": "Bobine démo de montage de clips musicaux.",
+    "description": "Bobine démo personnelle rassemblant plusieurs montages de clips musicaux : choix des coupes, rythme calé sur la musique, transitions et effets visuels. Le fichier source (export brut, environ 395 Mo) n'a pas été mis en ligne directement pour ne pas alourdir le site ; une version compressée sera publiée ici.",
+    "year": 2026,
+    "featured": false,
+    "published": true,
+    "thumbnail": "projects/thumbnails/showreel-montage-de-clips-musicaux.jpg",
+    "image": null,
+    "video_file": null,
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "showreel-creation-digitale",
+    "title": "Showreel — Création Digitale",
+    "category": "Web design",
+    "client": null,
+    "services": [
+      "creation-visuelle"
+    ],
+    "excerpt": "Bobine de démonstration des créations digitales.",
+    "description": "Bobine de démonstration qui rassemble des créations digitales réalisées pour différents clients : visuels de marque, bannières et contenus pensés pour les réseaux sociaux. Elle donne un aperçu rapide de l'étendue du travail de création visuelle, au-delà des projets présentés individuellement dans le portfolio.",
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "thumbnail": "projects/thumbnails/showreel-creation-digitale.jpg",
+    "image": null,
+    "video_file": "projects/videos/showreel-creation-digitale.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "showreel-audiovisuel-montage",
+    "title": "Showreel — Audiovisuel & Montage",
+    "category": "Montage vidéo",
+    "client": null,
+    "services": [
+      "montage-video"
+    ],
+    "excerpt": "Bobine de démonstration montage et habillage vidéo.",
+    "description": "Bobine de démonstration centrée sur le montage et l'habillage vidéo : extraits d'habillages de chaîne, de génériques d'émission et de montages, choisis pour donner une vue d'ensemble du savoir-faire audiovisuel en quelques minutes.",
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "thumbnail": "projects/thumbnails/showreel-audiovisuel-montage.jpg",
+    "image": null,
+    "video_file": "projects/videos/showreel-audiovisuel-montage.mp4",
+    "video_url": "",
+    "gallery": []
+  },
+  {
+    "slug": "video-generee-par-ia-retour-a-lecole",
+    "title": "Vidéo générée par IA — Retour à l'école",
+    "category": "Montage vidéo",
+    "client": null,
+    "services": [
+      "montage-video",
+      "habillage-tv-motion-design"
+    ],
+    "excerpt": "Court-métrage généré par intelligence artificielle.",
+    "description": "Vidéo narrative courte entièrement générée par intelligence artificielle, puis montée et finalisée pour un rendu cinématographique cohérent. Ce projet illustre une nouvelle corde à l'arc : la création de contenus vidéo par IA générative, en complément du tournage et du montage traditionnels.",
+    "year": 2026,
+    "featured": true,
+    "published": true,
+    "thumbnail": "projects/thumbnails/video-ia-retour-ecole-cover.jpg",
+    "image": null,
+    "video_file": "projects/videos/video-ia-retour-ecole.mp4",
+    "video_url": "",
+    "gallery": []
+  }
+]

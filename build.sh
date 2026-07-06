@@ -9,3 +9,4 @@ python manage.py migrate
 python manage.py ensure_admin
 python manage.py seed_abasse_portfolio
 python manage.py seed_cv_profile
+python manage.py seed_media_library_paths
