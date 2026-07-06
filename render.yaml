@@ -48,3 +48,9 @@ services:
         sync: false
       - key: EMAIL_HOST_PASSWORD
         sync: false
+      - key: ADMIN_USERNAME
+        value: abasse
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_EMAIL
+        value: bassitniang1998@gmail.com
