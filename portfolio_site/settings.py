@@ -187,7 +187,6 @@ LOGOUT_REDIRECT_URL = '/admin/login/'
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Media (user-uploaded photos/videos) is stored on Cloudflare R2 (S3-compatible)
 # when credentials are configured, since Render's own disk isn't persistent.
@@ -198,8 +197,24 @@ R2_BUCKET_NAME = os.getenv("R2_BUCKET_NAME")
 R2_ENDPOINT_URL = os.getenv("R2_ENDPOINT_URL")
 R2_PUBLIC_URL = os.getenv("R2_PUBLIC_URL")
 
-if R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY and R2_BUCKET_NAME and R2_ENDPOINT_URL:
-    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+USE_R2 = bool(R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY and R2_BUCKET_NAME and R2_ENDPOINT_URL)
+
+# Django 5's STORAGES setting is what actually controls default_storage /
+# FileField uploads — the legacy DEFAULT_FILE_STORAGE/STATICFILES_STORAGE
+# settings are silently ignored, which was the root cause of new uploads
+# landing on Render's ephemeral disk instead of R2.
+STORAGES = {
+    "default": (
+        {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}
+        if USE_R2
+        else {"BACKEND": "django.core.files.storage.FileSystemStorage"}
+    ),
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+if USE_R2:
     AWS_ACCESS_KEY_ID = R2_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY = R2_SECRET_ACCESS_KEY
     AWS_STORAGE_BUCKET_NAME = R2_BUCKET_NAME
