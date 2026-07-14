@@ -53,11 +53,19 @@
     </section>
   {% elif project.video_url %}
     <section class="video-section">
+      {% if "instagram.com" in project.video_url %}
+      <a class="video-youtube-link" href="{{ project.video_url }}" target="_blank" rel="noopener"
+         aria-label="Voir « {{ project.title }} » sur Instagram">
+        {% if project.cover_image %}<img src="{{ project.cover_image.url }}" alt="{{ project.title }}" loading="lazy">{% else %}<div class="video-link-placeholder"></div>{% endif %}
+        <span class="play-badge play-badge-instagram"><i class="bi bi-instagram"></i></span>
+      </a>
+      {% else %}
       <a class="video-youtube-link" href="{{ project.video_url }}" target="_blank" rel="noopener"
          aria-label="Voir « {{ project.title }} » sur YouTube">
         {% if project.cover_image %}<img src="{{ project.cover_image.url }}" alt="{{ project.title }}" loading="lazy">{% endif %}
         <span class="play-badge"><i class="bi bi-youtube"></i></span>
       </a>
+      {% endif %}
     </section>
   {% endif %}
 
