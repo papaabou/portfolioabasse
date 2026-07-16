@@ -1,3 +1,8 @@
+import io
+import os
+import tempfile
+
+from django.core.files.base import ContentFile
 from django.shortcuts import render, redirect
 import resend
 from django.conf import settings
@@ -57,3 +62,49 @@ def send_django_email_async(**kwargs):
             logger.exception("Django email failed")
 
     Thread(target=_send, daemon=True).start()
+
+
+def extract_video_frame(video_file_field, seek_fraction=0.15, max_width=1600, quality=85):
+    """
+    Extract a representative JPEG frame from an already-saved video FileField
+    (local disk or remote storage like R2), seeking a bit into the clip to
+    avoid black/blank intro frames. Returns a ContentFile ready to assign to
+    an ImageField, or None if extraction fails.
+    """
+    import cv2
+    from PIL import Image
+
+    tmp_path = None
+    try:
+        with video_file_field.open("rb") as src:
+            with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as tmp:
+                tmp_path = tmp.name
+                for chunk in src.chunks():
+                    tmp.write(chunk)
+
+        cap = cv2.VideoCapture(tmp_path)
+        frame_count = cap.get(cv2.CAP_PROP_FRAME_COUNT) or 0
+        target_frame = int(frame_count * seek_fraction)
+        cap.set(cv2.CAP_PROP_POS_FRAMES, target_frame)
+        ok, frame = cap.read()
+        cap.release()
+
+        if not ok:
+            return None
+
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        img = Image.fromarray(rgb_frame)
+        if img.width > max_width:
+            ratio = max_width / img.width
+            img = img.resize((max_width, int(img.height * ratio)), Image.LANCZOS)
+
+        buf = io.BytesIO()
+        img.save(buf, format="JPEG", quality=quality, optimize=True)
+        buf.seek(0)
+        return ContentFile(buf.read())
+    except Exception:
+        logger.exception("Video frame extraction failed")
+        return None
+    finally:
+        if tmp_path and os.path.exists(tmp_path):
+            os.remove(tmp_path)

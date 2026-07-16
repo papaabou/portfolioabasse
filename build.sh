@@ -10,3 +10,4 @@ python manage.py ensure_admin
 python manage.py seed_abasse_portfolio
 python manage.py seed_cv_profile
 python manage.py seed_media_library_paths
+python manage.py backfill_video_thumbnails

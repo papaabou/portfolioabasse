@@ -20,10 +20,20 @@ from blog.models import Post
 from services.models import Service
 
 from .forms import MessageForm, ProjectForm, ProjectImageForm, PostForm, ServiceForm
+from portfolio_site.utils import extract_video_frame
 
 
 def staff_required(user):
     return user.is_staff
+
+
+def ensure_project_thumbnail(project):
+    """If a project has an uploaded video but no cover photo, grab a frame
+    from the video so it doesn't show an empty placeholder in listings."""
+    if project.video_file and not project.thumbnail and not project.image:
+        frame = extract_video_frame(project.video_file)
+        if frame:
+            project.thumbnail.save(f"{project.slug}-auto.jpg", frame, save=True)
 
 # Login view
 def login_view(request):
@@ -108,7 +118,8 @@ def project_create(request):
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            project = form.save()
+            ensure_project_thumbnail(project)
             return redirect("dashboard:dashboard_projects")
     else:
         form = ProjectForm()
@@ -122,7 +133,8 @@ def project_edit(request, pk):
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
-            form.save()
+            project = form.save()
+            ensure_project_thumbnail(project)
             return redirect("dashboard:dashboard_projects")
     else:
         form = ProjectForm(instance=project)
